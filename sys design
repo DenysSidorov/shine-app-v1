@@ -1,0 +1,32 @@
+
+REST Routes:
+
+---Categories---:
+GET /api/categories - Get all categories
+POST /api/categories - Create a new category
+GET /api/categories/:categoryId - Get specific category information
+PUT /api/categories/:categoryId - Update category information
+DELETE /api/categories/:categoryId - Delete a category
+
+---Tasks---:
+GET /api/categories/:categoryId/tasks - Get all tasks within a category
+POST /api/categories/:categoryId/tasks - Create a new task within a category
+GET /api/categories/:categoryId/tasks/:taskId - Get specific task information within a category
+PUT /api/categories/:categoryId/tasks/:taskId - Update task information
+DELETE /api/categories/:categoryId/tasks/:taskId - Delete a task
+
+---Task actions---:
+POST /api/categories/:categoryId/tasks/:taskId/complete - Mark a task as complete
+
+
+Frontend Routing URLs:
+
+---Categories---:
+/categories - List of all categories
+/categories/:categoryId - Specific category
+            /categories/:categoryId/edit - Edit category
+
+---Tasks---:
+/categories/:categoryId/tasks - List of all tasks within a category
+/categories/:categoryId/tasks/:taskId - Specific task
+

@@ -1,8 +1,6 @@
-import './App.css'
-import { Blog} from './Blog'
+import {Outlet} from 'react-router-dom';
 
-function App() {
-
+function RootLayout() {
     return (
         <div className="App">
             <div className="navbar">
@@ -11,8 +9,8 @@ function App() {
                     <li>Blog</li>
                 </ul>
             </div>
-            <Blog />
+            <Outlet />
         </div>
     )
 }
-export default App
+export default RootLayout
