@@ -1,35 +1,44 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom/client';
 import {
     createBrowserRouter,
     RouterProvider
 } from 'react-router-dom';
 import ErrorPage from '../pages/Error.tsx';
-import RootLayout from '../components/RootLayout.tsx';
 import Category from '../pages/category/Category.tsx';
+import RedirectPage from '../pages/redirectes/RedirectPage.tsx';
+import Categories from '../pages/categories/Category.tsx';
+import Tasks from '../pages/tasks/Tasks.tsx';
 
 export const router = createBrowserRouter([
     {
-        path: '/', // should be categories
-        element: <RootLayout />,
+        path: '/',
+        element: <RedirectPage />,
         errorElement: <ErrorPage />,
-        children: [
-            {
-                path: "categories/:categoryId",
-                element: <Category />,
-                children: [
-                    {
-                        path: "tasks",
-                        element: <Category />,
-                    },
-                ],
-            },
-
-        ],
+        // children: [
+        //     {
+        //         path: "categories/:categoryId",
+        //         element: <Category />,
+        //         children: [
+        //             {
+        //                 path: "tasks",
+        //                 element: <Category />,
+        //             },
+        //         ],
+        //     },
+        //
+        // ],
+    // /categories/:categoryId
     },
     {
         path: '/categories',
-        element: <div>TEST</div>
+        element: <Categories />,
+    },
+    {
+        path: '/categories/:categoryId',
+        element: <Category />,
+    },
+    {
+        path: '/categories/:categoryId/tasks',
+        element: <Tasks />,
     }
 ]);
 

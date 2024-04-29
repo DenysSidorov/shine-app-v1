@@ -1,8 +1,6 @@
-import {useParams} from 'react-router-dom';
-
 function Categories() {
     return (
-        <div>-Categories-</div>
+        <div>List of all Categories</div>
     )
 }
 export default Categories

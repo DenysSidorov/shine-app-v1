@@ -24,9 +24,9 @@ Frontend Routing URLs:
 ---Categories---:
 /categories - List of all categories
 /categories/:categoryId - Specific category
-            /categories/:categoryId/edit - Edit category
+      NOT USED      /categories/:categoryId/edit - Edit category
 
 ---Tasks---:
 /categories/:categoryId/tasks - List of all tasks within a category
-/categories/:categoryId/tasks/:taskId - Specific task
+      NOT USED      /categories/:categoryId/tasks/:taskId - Specific task
 

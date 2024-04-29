@@ -1,1 +1,22 @@
 add Error page
+add search
+add login
+add pagination/infinity loader
+add sockets/polling/sse for several users
+add localisation
+add performance improvements (React.memo, PureComponent, React.useCallback, React.useMemo .etc)
+add linter/prettier
+add commit hooks
+add documentation
+add ci/cd (gitlab)
+add docker
+add DI
+add tests unit, int., e2e
+add security checks
+add seo optimisation
+add online code checker
+add login system (sentry etc)
+add users' behaviour checker on page
+remove all any types in typescript
+
+
