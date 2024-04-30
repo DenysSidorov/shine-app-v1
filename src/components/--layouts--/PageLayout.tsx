@@ -1,6 +1,6 @@
 import {Outlet} from 'react-router-dom';
 
-function RootLayout() {
+function PageLayout() {
     return (
         <div className="App">
             <div className="navbar">
@@ -13,4 +13,4 @@ function RootLayout() {
         </div>
     )
 }
-export default RootLayout
+export default PageLayout

@@ -11,34 +11,20 @@ import Tasks from '../pages/tasks/Tasks.tsx';
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <RedirectPage />,
-        errorElement: <ErrorPage />,
-        // children: [
-        //     {
-        //         path: "categories/:categoryId",
-        //         element: <Category />,
-        //         children: [
-        //             {
-        //                 path: "tasks",
-        //                 element: <Category />,
-        //             },
-        //         ],
-        //     },
-        //
-        // ],
-    // /categories/:categoryId
+        element: <RedirectPage/>,
+        errorElement: <ErrorPage/>
     },
     {
         path: '/categories',
-        element: <Categories />,
+        element: <Categories/>
     },
     {
         path: '/categories/:categoryId',
-        element: <Category />,
+        element: <Category/>
     },
     {
         path: '/categories/:categoryId/tasks',
-        element: <Tasks />,
+        element: <Tasks/>
     }
 ]);
 
