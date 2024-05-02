@@ -1,10 +1,9 @@
 import {useParams} from 'react-router-dom';
 
 function Tasks() {
-    let { categoryId } = useParams();
-    console.log('render tasks');
-    return (
-        <div>Tasks of Category with id: {categoryId}</div>
-    )
+    const {categoryId} = useParams();
+     console.log('render tasks3');
+    return <div className="lol">Tasks of Category with id: {categoryId}</div>;
 }
-export default Tasks
+
+export default Tasks;
