@@ -5,11 +5,11 @@ export default function ErrorPage() {
     useRouteError();
   console.error(error);
 
-  const getErrorHTML = (
-    error: { statusText: string; message: string } | unknown,
-  ) => {
-    // @ts-ignore
-    return <i>{error.statusText || error.message}</i>;
+  // const getErrorHTML = (error: { statusText: string; message: string } | unknown,) => {
+  //
+  // return <i>{error?.statusText || error?.message}</i>; }
+  const getErrorHTML = () => {
+    return "error";
   };
 
   return (
@@ -17,7 +17,7 @@ export default function ErrorPage() {
       <h1>Oops!</h1>
       <p>Sorry, an unexpected error has occurred.</p>
       <p>
-        {getErrorHTML(error)};{/*<i>{error?.statusText || error?.message}</i>*/}
+        {getErrorHTML()};{/*<i>{error?.statusText || error?.message}</i>*/}
       </p>
     </div>
   );

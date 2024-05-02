@@ -6,7 +6,7 @@ import ErrorPage from "@/pages/Error.tsx";
 import Category from "@/pages/category/Category.tsx";
 import Tasks from "@/pages/tasks/Tasks.tsx";
 
-export const router = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: "/",
     element: <RedirectPage />,
