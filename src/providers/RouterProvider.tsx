@@ -2,12 +2,12 @@ import {
     createBrowserRouter,
     RouterProvider
 } from 'react-router-dom';
-import ErrorPage from '../pages/Error.tsx';
-import Category from '../pages/category/Category.tsx';
-import Categories from '../pages/categories/Category.tsx';
-import Tasks from '../pages/tasks/Tasks.tsx';
-import PageLayout from '../layouts/PageLayout.tsx';
-import RedirectPage from '../pages/redirectes/RedirectPage.tsx';
+import RedirectPage from '@/pages/redirectes/RedirectPage.tsx';
+import PageLayout from '@/layouts/PageLayout.tsx';
+import Categories from '@/pages/categories/Category.tsx';
+import ErrorPage from '@/pages/Error.tsx';
+import Category from '@/pages/category/Category.tsx';
+import Tasks from '@/pages/tasks/Tasks.tsx';
 
 export const router = createBrowserRouter([
     {
@@ -22,7 +22,6 @@ export const router = createBrowserRouter([
     {
         path: '/',
         element: <PageLayout/>,
-        errorElement: <ErrorPage/>,
         children: [
             {
                 path: '/categories',

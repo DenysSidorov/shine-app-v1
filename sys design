@@ -31,5 +31,6 @@ Frontend Routing URLs:
       NOT USED      /categories/:categoryId/tasks/:taskId - Specific task
 
 
-useful packages:
+useful utils:
 https://github.com/juliencrn/usehooks-ts
+
