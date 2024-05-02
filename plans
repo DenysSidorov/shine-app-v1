@@ -1,7 +1,9 @@
-add Error page
 add alias
-add search
+
+add prettier/eslint
 add login
+add Error page
+add search
 add pagination/infinity loader
 add sockets/polling/sse for several users
 add localisation

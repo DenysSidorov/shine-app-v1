@@ -30,3 +30,6 @@ Frontend Routing URLs:
 /categories/:categoryId/tasks - List of all tasks within a category
       NOT USED      /categories/:categoryId/tasks/:taskId - Specific task
 
+
+useful packages:
+https://github.com/juliencrn/usehooks-ts
