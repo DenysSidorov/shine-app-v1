@@ -50,7 +50,8 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
-      "npm lint"
+      "npm lint",
+      "vitest"
     ]
   }
 }
