@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { test } from "vitest";
-import Button from "@/components/--common--/button/Button.tsx";
+import Button from "@/components/button/Button.tsx";
 
 test("renders learn react link", () => {
   render(<Button />);

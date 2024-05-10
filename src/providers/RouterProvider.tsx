@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RedirectPage from "@/pages/redirectes/RedirectPage.tsx";
-import PageLayout from "@/layouts/PageLayout.tsx";
+import PageLayout from "@/layouts/page-layout/PageLayout.tsx";
 import Categories from "@/pages/categories/Category.tsx";
 import ErrorPage from "@/pages/Error.tsx";
 import Category from "@/pages/category/Category.tsx";

@@ -1,6 +1,11 @@
 @import "./reset.css";
 
 :root {
+
+    & body {
+        background-color: red;
+    }
+
     & ul {
         display: flex;
         gap: 30px;
