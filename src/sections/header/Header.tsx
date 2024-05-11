@@ -6,17 +6,17 @@ import Menu from "@/components/menu";
 function Header() {
   return (
     <div className={s.header}>
-      <div className={s.avatar}>
+      <div>
         <Avatar
           src={
             "https://blog.logrocket.com/wp-content/uploads/2019/04/diogosouza.jpeg?w=150&h=150&crop=1"
           }
         />
       </div>
-      <div className={s.title}>
-        <Title title={"Categories"} />
+      <div>
+        <Title title={"Categories"} className={s.title} />
       </div>
-      <div className={s.menu}>
+      <div>
         <Menu />
       </div>
     </div>

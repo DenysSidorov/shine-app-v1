@@ -1,9 +1,15 @@
 import { render, screen } from "@testing-library/react";
 import { test } from "vitest";
-import Button from "@/components/button/Button.tsx";
+import Checkbox from "@/components/Checkbox/Checkbox.tsx";
 
 test("renders learn react link", () => {
-  render(<Button />);
+  render(
+    <Checkbox
+      label={"Start working"}
+      name={'test'}
+      value={true}
+    />,
+  );
   const linkElement = screen.getByText(/Hello, React!/i);
   expect(linkElement).toBeInTheDocument();
 });
