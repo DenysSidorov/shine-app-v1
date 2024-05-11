@@ -1,7 +1,7 @@
 import s from "./CategoriesListItem.module.scss";
 import { CategoryListType, CategoryType } from "@/types/category.ts";
 import Title from "@/components/title";
-import Checkbox from "@/components/Checkbox";
+import Checkbox from "@/components/checkbox";
 
 interface CategoriesListItemI {
   category: CategoryType;
