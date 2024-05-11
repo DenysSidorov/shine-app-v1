@@ -1,17 +1,34 @@
 import s from "./Header.module.scss";
-import { Link } from "react-router-dom";
+import Avatar from "@/components/avatar";
+import Title from "@/components/title";
+import Menu from "@/components/menu";
 
 function Header() {
   return (
     <div className={s.header}>
-      <ul>
-        <Link to="/categories">categories</Link>
-        <Link to="/categories/1">categories/:1</Link>
-        <Link to="/categories/2">categories/:2</Link>
-        <Link to="/categories/2/tasks">/categories/1/tasks</Link>
-      </ul>
+      <div className={s.avatar}>
+        <Avatar
+          src={
+            "https://blog.logrocket.com/wp-content/uploads/2019/04/diogosouza.jpeg?w=150&h=150&crop=1"
+          }
+        />
+      </div>
+      <div className={s.title}>
+        <Title title={"Categories"} />
+      </div>
+      <div className={s.menu}>
+        <Menu />
+      </div>
     </div>
   );
 }
 
 export default Header;
+/*
+<ul>
+        <Link to="/categories">categories</Link>
+        <Link to="/categories/1">categories/:1</Link>
+        <Link to="/categories/2">categories/:2</Link>
+        <Link to="/categories/2/tasks">/categories/1/tasks</Link>
+      </ul>
+* */

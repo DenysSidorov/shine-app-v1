@@ -1,0 +1,18 @@
+@import "./reset.css";
+@import "./variables.scss";
+@import '@fontsource/roboto/300.css';
+@import '@fontsource/roboto/400.css';
+@import '@fontsource/roboto/700.css';
+
+:root {
+
+    & body {
+        background-color: red;
+        font-family: 'Roboto', sans-serif;
+    };
+
+    & ul {
+        display: flex;
+        gap: 30px;
+    }
+}
