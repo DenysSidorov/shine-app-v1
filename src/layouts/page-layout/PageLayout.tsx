@@ -10,11 +10,6 @@ function PageLayout() {
         <Header />
       </div>
       <div className={s.content}>
-        <div
-          style={{ height: "200px", backgroundColor: "red", width: "160px" }}
-        >
-          me
-        </div>
         <Outlet />
       </div>
     </div>

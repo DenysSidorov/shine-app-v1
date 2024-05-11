@@ -1,0 +1,96 @@
+{
+  "categories": [
+    {
+      "type": "list",
+      "title": "CAR",
+      "color": "#eedb09",
+      "date": "2025-02-02",
+      "category": [
+        {
+          "name": "Buy Tools",
+          "date": "2025-02-02",
+          "completed": true
+        },
+        {
+          "name": "Change Wheels",
+          "date": "2025-02-02",
+          "completed": true
+        },
+        {
+          "name": "Paint Doors",
+          "date": "2025-02-02",
+          "completed": false
+        },
+        {
+          "name": "Change old oil from Alex",
+          "date": "2025-02-02",
+          "completed": false
+        },
+      ]
+    },
+    {
+      "type": "list",
+      "title": "DAILY",
+      "color": "#4885ED",
+      "date": "2025-02-02",
+      "category": [
+        {
+          "name": "Start working out today!",
+          "date": "2025-02-02",
+          "completed": false
+        },
+        {
+          "name": "Read Alchemist",
+          "date": "2025-02-02",
+          "completed": true
+        },
+        {
+          "name": "Wake up",
+          "date": "2025-02-02",
+          "completed": false
+        },
+        {
+          "name": "Call Lucia",
+          "date": "2025-02-02",
+          "completed": false
+        },
+        {
+          "name": "Visit Mammy",
+          "date": "2025-02-02",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "title": "HOME",
+      "color": "#B8E986",
+      "date": "2025-02-02",
+      "category": [
+        {
+          "name": "Order Food",
+          "date": "2025-02-02",
+          "completed": false
+        },
+        {
+          "name": "Water Plans",
+          "date": "2025-02-02",
+          "completed": true
+        },
+        {
+          "name": "Wash Clothes",
+          "date": "2025-02-02",
+          "completed": true
+        }
+      ]
+    },
+    {
+      "type": "count",
+      "title": "DRINK WATER",
+      "color": "#50E3C2",
+      "date": "2025-02-02",
+      "goalCount": 8,
+      "currentCount": 3
+    }
+  ]
+}
