@@ -1,4 +1,8 @@
 .categories {
   padding: 20px;
   padding-top: 0;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }

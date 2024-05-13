@@ -1,0 +1,21 @@
+@import "src/styles/variables";
+
+.wrapper {
+  position: sticky;
+  top: calc(100vh - 100px);
+  margin-left: calc(100% - 102px);
+  height: 72px;
+  cursor: pointer;
+  width: 72px;
+  background-color: $colInteractiveElement;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+
+  & > svg {
+    color: $colWhite;
+    height: 40px;
+    width: 40px;
+  }
+}
