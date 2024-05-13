@@ -30,3 +30,22 @@
   font-size: 12px !important;
   margin-left: 8px;
 }
+
+.countTypeIconWrapper{
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  & > svg {
+    color: $colWhite;
+    font-size: 45px;
+  }
+}
+.countTypeText {
+  width: 100%;
+  margin-top: 28px;
+  color: $colWhite;
+  font-size: 18px;
+  text-align: center;
+}

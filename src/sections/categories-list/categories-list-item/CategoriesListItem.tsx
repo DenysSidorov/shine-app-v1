@@ -1,10 +1,16 @@
 import s from "./CategoriesListItem.module.scss";
-import { CategoryListType, CategoryType } from "@/types/category.ts";
+import {
+  CategoryListType,
+  AllCategoryTypes,
+  CategoryCountType,
+} from "@/types/category.ts";
+import { FaGlassWater } from "react-icons/fa6";
 import Title from "@/components/title";
 import Checkbox from "@/components/checkbox";
+import { Fragment } from "react";
 
 interface CategoriesListItemI {
-  category: CategoryType;
+  category: AllCategoryTypes;
 }
 
 function CategoriesListItem({ category }: CategoriesListItemI) {
@@ -23,6 +29,16 @@ function CategoriesListItem({ category }: CategoriesListItemI) {
           />
         </div>
       ))}
+      {(category as CategoryCountType)?.goalCount !== undefined ? (
+        <Fragment>
+          <div className={s.countTypeIconWrapper}>
+            <FaGlassWater />
+          </div>
+          <div className={s.countTypeText}>
+            {category.currentCount}/{category.goalCount} times
+          </div>
+        </Fragment>
+      ) : null}
     </div>
   );
 }
