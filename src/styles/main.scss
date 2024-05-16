@@ -15,4 +15,10 @@
         display: flex;
         gap: 30px;
     }
+
+    & .noWrap {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }

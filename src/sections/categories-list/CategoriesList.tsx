@@ -1,16 +1,37 @@
 import s from "./CategoriesList.module.scss";
 import data from "@/api/data.json";
-import CategoriesListItem from "@/sections/categories-list/categories-list-item";
-import { AllCategoryTypes } from "@/types/category.ts";
+import CategoriesTypeListtItem from "@/sections/categories-list/categories-type-list-item";
+import CategoriesTypeCountItem from "@/sections/categories-list/categories-type-count-item";
+import {
+  AllCategoryTypes,
+  CategoryCountType,
+  CategoryListType,
+} from "@/types/category.ts";
 import { Fragment } from "react";
 import AddNewItem from "@/components/add-new-item";
 
 function CategoriesList() {
+  const { categories } = data;
+
   return (
     <Fragment>
       <div className={s.categories}>
-        {data.categories.map((category: AllCategoryTypes) => {
-          return <CategoriesListItem category={category} key={category.id} />;
+        {categories.map((category: AllCategoryTypes) => {
+          if (category.type === "list") {
+            return (
+              <CategoriesTypeListtItem
+                category={category as CategoryListType}
+                key={category.id}
+              />
+            );
+          } else if (category.type === "count") {
+            return (
+              <CategoriesTypeCountItem
+                category={category as CategoryCountType}
+                key={category.id}
+              />
+            );
+          }
         })}
       </div>
       <AddNewItem />

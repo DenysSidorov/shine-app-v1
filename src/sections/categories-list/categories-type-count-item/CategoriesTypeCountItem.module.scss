@@ -1,0 +1,40 @@
+@import "src/styles/variables";
+
+.block {
+  border-radius: 16px;
+  height: 205px;
+  padding: 16px;
+}
+
+.title {
+  color: $colWhite;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  font-size: 12px;
+}
+
+.separator {
+  width: 100%;
+  height: 0.5px;
+  margin-top: 8px;
+  background-color: $colWhite;
+}
+
+.countTypeIconWrapper{
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  & > svg {
+    color: $colWhite;
+    font-size: 45px;
+  }
+}
+.countTypeText {
+  width: 100%;
+  margin-top: 28px;
+  color: $colWhite;
+  font-size: 18px;
+  text-align: center;
+}

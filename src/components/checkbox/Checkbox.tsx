@@ -55,6 +55,7 @@ const Checkbox = ({
       </span>
       <span
         className={classNames(
+          "noWrap",
           s.label,
           labelClassName,
           disabled && s.disabled,
