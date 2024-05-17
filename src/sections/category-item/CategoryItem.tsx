@@ -1,9 +1,9 @@
-import s from "./CategoryItems.module.scss";
+import s from "./CategoryItem.module.scss";
 import { MdEdit } from "react-icons/md";
 import Checkbox from "@/components/checkbox";
 // import data from "@/api/data.json";
 
-function CategoryItems() {
+function CategoryItem() {
   const isList = true;
   return (
     <div className={s.items}>
@@ -31,4 +31,4 @@ function CategoryItems() {
   );
 }
 
-export default CategoryItems;
+export default CategoryItem;
