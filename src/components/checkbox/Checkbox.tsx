@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { FaCheck } from "react-icons/fa";
 import s from "./Checkbox.module.scss";
+import { Fragment } from "react";
 
 interface CheckboxI {
   value: boolean;
@@ -11,6 +12,7 @@ interface CheckboxI {
   labelClassName?: string;
   disabled?: boolean;
   completed?: boolean;
+  hideCheckbox?: boolean;
 }
 
 const Checkbox = ({
@@ -21,6 +23,7 @@ const Checkbox = ({
   className,
   labelClassName,
   disabled,
+  hideCheckbox,
   completed,
 }: CheckboxI) => {
   const clickHandler = (ev: React.MouseEvent<HTMLLabelElement>) => {
@@ -43,16 +46,20 @@ const Checkbox = ({
       onClick={clickHandler}
       data-tooltip-id={`checkBox${name}`}
     >
-      <input type="checkbox" name={name} defaultChecked={value} />
-      <span
-        className={classNames(
-          s.checkboxMask,
-          value && s.checked,
-          disabled && s.disabled,
-        )}
-      >
-        <FaCheck />
-      </span>
+      {!hideCheckbox && (
+        <Fragment>
+          <input type="checkbox" name={name} defaultChecked={value} />
+          <span
+            className={classNames(
+              s.checkboxMask,
+              value && s.checked,
+              disabled && s.disabled,
+            )}
+          >
+            <FaCheck />
+          </span>
+        </Fragment>
+      )}
       <span
         className={classNames(
           "noWrap",
