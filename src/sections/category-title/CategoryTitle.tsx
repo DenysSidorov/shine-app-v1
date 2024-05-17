@@ -5,8 +5,8 @@ function CategoryTitle() {
   return (
     <div className={s.items}>
       <div className={`noWrap ${s.content}`}>
-        <div className={s.title}>Garage</div>
-        <div className={s.text}>Buy wheels</div>
+        <div className={`noWrap ${s.title}`}>Garage</div>
+        <div className={`noWrap ${s.text}`}>Buy wheels</div>
         <div className={s.date}>at 06:30PM </div>
       </div>
 
