@@ -10,6 +10,7 @@ interface CheckboxI {
   onChange?: (event: React.MouseEvent<HTMLLabelElement>) => void;
   className?: string;
   labelClassName?: string;
+  checkboxClassName?: string;
   disabled?: boolean;
   completed?: boolean;
   hideCheckbox?: boolean;
@@ -22,6 +23,7 @@ const Checkbox = ({
   label,
   className,
   labelClassName,
+  checkboxClassName,
   disabled,
   hideCheckbox,
   completed,
@@ -51,6 +53,7 @@ const Checkbox = ({
           <input type="checkbox" name={name} defaultChecked={value} />
           <span
             className={classNames(
+              checkboxClassName,
               s.checkboxMask,
               value && s.checked,
               disabled && s.disabled,

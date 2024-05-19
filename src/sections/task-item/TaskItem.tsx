@@ -11,6 +11,7 @@ function TaskItem() {
         completed={false}
         labelClassName={s.labelClassName}
         className={s.checkbox}
+        checkboxClassName={s.checkboxClassName}
       />
     </div>
   );

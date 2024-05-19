@@ -8,18 +8,25 @@
 }
 
 .labelClassName {
-  color: $colDate !important;
-  font-weight: 300 !important;
-  font-size: 20px !important;
+  color: $colTextGrey !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
   margin-left: 8px;
-  top: 1px;
+  top: 3px;
   position: relative;
+  letter-spacing: 0.5px;
+}
+
+.checkboxClassName {
+  width: 21px!important;
+  height: 21px!important;
 }
 
 .checkbox {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 30px!important;
   & > span > svg {
     color: $colDate!important;
   }

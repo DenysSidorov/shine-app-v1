@@ -1,0 +1,64 @@
+@import "src/styles/variables";
+
+.wrapper {
+  margin-top: 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.addMore {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  .moreText {
+    top: 1px;
+    position: relative;
+    font-size: 14px;
+    color: $colTextGrey;
+    letter-spacing: 0.5px;
+  }
+}
+
+.inputContainer{
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 11px;
+
+  & > svg {
+    color: $colTextGrey;
+    height: 24px;
+    width: 24px;
+  }
+}
+
+.checkIcon {
+  color: $colInteractiveElementGreen!important;
+  position: relative;
+  left: -2px;
+  cursor: pointer;
+}
+
+.input {
+  height: 30px;
+  padding: 0 8px;
+  flex-grow: 1;
+  color: $colTextGrey;
+  border: 1px solid $colBorderGrey;
+  border-radius: 8px;
+  font-size: 12px;
+  background-color: $colWhite;
+
+  &::placeholder {
+    color: #B3B3B3;
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+
