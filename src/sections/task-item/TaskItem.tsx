@@ -1,4 +1,5 @@
 import s from "./TaskItem.module.scss";
+import { CiCircleRemove } from "react-icons/ci";
 import Checkbox from "@/components/checkbox";
 
 function TaskItem() {
@@ -13,6 +14,7 @@ function TaskItem() {
         className={s.checkbox}
         checkboxClassName={s.checkboxClassName}
       />
+      <CiCircleRemove className={s.removeIcon} />
     </div>
   );
 }
