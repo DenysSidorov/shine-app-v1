@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import s from "./CategoriesTypeListItem.module.scss";
 import { CategoryListType } from "@/types/category.ts";
 import Title from "@/components/title";
@@ -8,11 +9,12 @@ interface CategoriesListItemI {
   category: CategoryListType;
 }
 
+const LIMIT_TASKS = 4;
+
 function CategoriesTypeListItem({ category }: CategoriesListItemI) {
   const { tasks } = category;
   const countLimitedTasks = useMemo(() => {
-    const limit = 5;
-    return tasks.filter((_, ind: number) => ind < limit);
+    return tasks.filter((_, ind: number) => ind < LIMIT_TASKS);
   }, [tasks]);
 
   return (
@@ -20,7 +22,10 @@ function CategoriesTypeListItem({ category }: CategoriesListItemI) {
       className={`noWrap ${s.block}`}
       style={{ backgroundColor: category.color }}
     >
-      <Title title={category.title} className={s.title} />
+      <Link to={category.id}>
+        <Title title={category.title} className={s.title} />
+      </Link>
+
       <div className={s.separator} />
 
       {countLimitedTasks?.map((task) => (
@@ -34,6 +39,13 @@ function CategoriesTypeListItem({ category }: CategoriesListItemI) {
           />
         </div>
       ))}
+      {tasks.length > LIMIT_TASKS && (
+        <div className={s.showMore}>
+          <Link to={category.id} className={s.link}>
+            Show more...
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
