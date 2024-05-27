@@ -1,5 +1,5 @@
 add alias
-add prettier/eslint
+add linter/prettier
 
 add login
 add Error page
@@ -8,7 +8,6 @@ add pagination/infinity loader
 add sockets/polling/sse for several users
 add localisation
 add performance improvements (React.memo, PureComponent, React.useCallback, React.useMemo .etc)
-add linter/prettier
 add commit hooks
 add documentation
 add ci/cd (gitlab)

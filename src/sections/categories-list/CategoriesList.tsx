@@ -3,20 +3,21 @@ import data from "@/api/data.json";
 import CategoriesTypeListtItem from "@/sections/categories-list/categories-type-list-item";
 import CategoriesTypeCountItem from "@/sections/categories-list/categories-type-count-item";
 import {
-  AllCategoryTypes,
   CategoryCountType,
   CategoryListType,
+  CategoryType,
 } from "@/types/category.ts";
 import { Fragment } from "react";
 import AddNewItem from "@/components/add-new-item";
 
 function CategoriesList() {
-  const { categories } = data;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const categories: any[] = data.categories;
 
   return (
     <Fragment>
       <div className={s.categories}>
-        {categories.map((category: AllCategoryTypes) => {
+        {categories?.map((category: CategoryType) => {
           if (category.type === "list") {
             return (
               <CategoriesTypeListtItem
@@ -24,7 +25,8 @@ function CategoriesList() {
                 key={category.id}
               />
             );
-          } else if (category.type === "count") {
+          }
+          if (category.type === "count") {
             return (
               <CategoriesTypeCountItem
                 category={category as CategoryCountType}
