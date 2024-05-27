@@ -63,10 +63,21 @@
   }
 }
 
-.list {
-  color: $colInfoElementOrange;
-  transform: rotate(-30deg);
-  font-weight: 700;
+.listBlock{
+  display: flex;
+  align-items: center;
+  .list {
+    color: $colInfoElementOrange;
+    transform: rotate(-30deg);
+    font-weight: 700;
+  }
+  .text {
+    color: $colDate;
+    font-weight: 300;
+    font-size: 20px;
+    margin-left: 8px;
+    top: 1px;
+  }
 }
 
 .action {
