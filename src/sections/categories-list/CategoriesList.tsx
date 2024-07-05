@@ -1,6 +1,6 @@
 import s from "./CategoriesList.module.scss";
 import data from "@/api/data.json";
-import CategoriesTypeListtItem from "@/sections/categories-list/categories-type-list-item";
+import CategoriesTypeListItem from "@/sections/categories-list/categories-type-list-item";
 import CategoriesTypeCountItem from "@/sections/categories-list/categories-type-count-item";
 import {
   CategoryCountType,
@@ -20,7 +20,7 @@ function CategoriesList() {
         {categories?.map((category: CategoryType) => {
           if (category.type === "list") {
             return (
-              <CategoriesTypeListtItem
+              <CategoriesTypeListItem
                 category={category as CategoryListType}
                 key={category.id}
               />

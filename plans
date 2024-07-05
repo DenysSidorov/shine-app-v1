@@ -1,9 +1,12 @@
 add alias
 add linter/prettier
 
+remove all any types in typescript
 add login
+add preloaded preview
 add Error page
 add search
+add menu
 add pagination/infinity loader
 add sockets/polling/sse for several users
 add localisation
@@ -19,6 +22,5 @@ add seo optimisation
 add online code checker
 add login system (sentry etc)
 add users' behaviour checker on page
-remove all any types in typescript
 
 

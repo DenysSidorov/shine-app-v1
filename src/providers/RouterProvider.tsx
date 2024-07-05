@@ -9,7 +9,7 @@ import Tasks from "@/pages/tasks/Tasks.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <RedirectPage />,
+    element: <RedirectPage page="/categories" />,
     errorElement: <ErrorPage />,
   },
   {
