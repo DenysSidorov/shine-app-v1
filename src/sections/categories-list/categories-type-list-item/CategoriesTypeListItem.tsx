@@ -13,6 +13,7 @@ const LIMIT_TASKS = 4;
 
 function CategoriesTypeListItem({ category }: CategoriesListItemI) {
   const { tasks } = category;
+
   const countLimitedTasks = useMemo(() => {
     return tasks.filter((_, ind: number) => ind < LIMIT_TASKS);
   }, [tasks]);

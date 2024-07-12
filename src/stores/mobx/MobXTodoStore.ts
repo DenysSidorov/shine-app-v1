@@ -1,25 +1,58 @@
-// stores/MobXTodoStore.ts
 import { makeAutoObservable } from "mobx";
-import { Todo, AppStore } from "@/stores/AppStore.ts";
+import { AppStore } from "@/stores/AppStore.ts";
+import * as categoryService from "@/services/CategoryService";
+import { CategoryType } from "@/types/category.ts";
 
 class MobXTodoStore implements AppStore {
-  todos: Todo[] = [];
+  categories: CategoryType[] = [];
+  currentCategory: CategoryType | undefined = undefined;
+  error: string | null = null;
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  getTodos(): Todo[] {
-    return this.todos;
+  loadCategories = async (): Promise<void> => {
+    try {
+      const data = await categoryService.fetchCategories();
+      this.categories = data;
+    } catch (error) {
+      console.log(error);
+      this.setError("Failed to load todos");
+    }
+  };
+
+  loadCurrentCategory = async (id: string): Promise<void> => {
+    try {
+      const data = await categoryService.fetchCategoryById(id);
+      this.currentCategory = data;
+    } catch (error) {
+      console.log(error);
+      this.setError("Failed to load todos");
+    }
+  };
+
+  // getError(): string | null {
+  //   return this.error;
+  // }
+
+  setError(error: string | null): void {
+    this.error = error;
   }
 
-  addTodo(todo: Todo): void {
-    this.todos.push(todo);
+  getCategories(): CategoryType[] {
+    return this.categories;
   }
 
-  removeTodo(id: string): void {
-    this.todos = this.todos.filter((todo) => todo.id !== id);
-  }
+  // addTodo(todo: Todo): void {
+  //   console.log(todo);
+  //   // this.todos.push(todo);
+  // }
+  //
+  // removeTodo(id: string): void {
+  //   console.log(id);
+  //   // this.todos = this.todos.filter((todo) => todo.id !== id);
+  // }
 }
 
 export default MobXTodoStore;

@@ -1,13 +1,46 @@
-import { Fragment } from "react";
-import CategorySection from "@/sections/category-item/category-section";
-// import CategoryActions from "@/components/category-actions";
+import { Link, useParams } from "react-router-dom";
+import s from "./CategoryItem.module.scss";
+import { MdEdit } from "react-icons/md";
+import Checkbox from "@/components/checkbox";
+import { TaskType } from "@/types/task.ts";
 
-function CategoryItem() {
+function CategoryItem({ task, title }: { task: TaskType; title?: string }) {
+  const { categoryId } = useParams();
+  const isList = task.completed;
+  const url = `/categories/${categoryId}/tasks`;
   return (
-    <Fragment>
-      {/*<CategoryActions />*/}
-      <CategorySection />
-    </Fragment>
+    <div className={s.item}>
+      <div className={s.mark} />
+      <div className={`noWrap ${s.content}`}>
+        <Link to={url}>
+          <div className={s.title}>{title}</div>
+        </Link>
+        <div className={s.textWrapper}>
+          {isList ? (
+            <Link to={url}>
+              <div className={s.listBlock}>
+                <div className={s.list}>List</div>
+                <div className={s.text}>Order Tools2</div>
+              </div>
+            </Link>
+          ) : (
+            <Checkbox
+              label={task.name}
+              name={task.id + task.name}
+              value={task.completed}
+              completed={task.completed}
+              labelClassName={s.labelClassName}
+              className={s.checkbox}
+              hideCheckbox={isList}
+            />
+          )}
+        </div>
+        <div className={s.date}>{task.date.toString()}</div>
+      </div>
+      <div className={s.action}>
+        <MdEdit />
+      </div>
+    </div>
   );
 }
 

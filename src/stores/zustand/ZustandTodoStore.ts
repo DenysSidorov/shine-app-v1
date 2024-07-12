@@ -4,7 +4,7 @@ import { Todo, AppStore } from "@/stores/AppStore.ts";
 
 const useZustandStore = create<AppStore>((set, get) => ({
   todos: [] as Todo[],
-  getTodos: () => {
+  getCategories: () => {
     return get().todos;
   },
   addTodo: (todo: Todo) =>
@@ -15,8 +15,8 @@ const useZustandStore = create<AppStore>((set, get) => ({
 }));
 
 class ZustandTodoStore implements AppStore {
-  getTodos(): Todo[] {
-    return useZustandStore.getState().getTodos();
+  getCategories(): Todo[] {
+    return useZustandStore.getState().getCategories();
   }
 
   addTodo(todo: Todo) {

@@ -7,6 +7,9 @@ export interface CategoryType {
   title: string;
   color: string;
   date: string | Date;
+  tasks?: TaskType[];
+  goalCount?: number;
+  currentCount?: number;
 }
 
 export interface CategoryListType extends CategoryType {

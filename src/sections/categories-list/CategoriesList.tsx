@@ -1,5 +1,4 @@
 import s from "./CategoriesList.module.scss";
-import data from "@/api/data.json";
 import CategoriesTypeListItem from "@/sections/categories-list/categories-type-list-item";
 import CategoriesTypeCountItem from "@/sections/categories-list/categories-type-count-item";
 import {
@@ -7,12 +6,19 @@ import {
   CategoryListType,
   CategoryType,
 } from "@/types/category.ts";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import AddNewItem from "@/components/add-new-item";
+import { useAppStore } from "@/hooks/useAppStore.tsx";
+import { observer } from "mobx-react";
 
 function CategoriesList() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const categories: any[] = data.categories;
+  const { categories, loadCategories } = useAppStore();
+
+  useEffect(() => {
+    (async () => {
+      await loadCategories();
+    })();
+  }, [loadCategories]);
 
   return (
     <Fragment>
@@ -41,4 +47,6 @@ function CategoriesList() {
   );
 }
 
-export default CategoriesList;
+const ObservedCategoriesList = observer(CategoriesList);
+
+export default ObservedCategoriesList;

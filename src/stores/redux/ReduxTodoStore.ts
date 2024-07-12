@@ -22,7 +22,7 @@ const store = configureStore({
 });
 
 class ReduxTodoStore implements AppStore {
-  getTodos() {
+  getCategories() {
     return store.getState().todos;
   }
 
