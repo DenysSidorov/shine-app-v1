@@ -9,7 +9,7 @@ import { TaskType } from "@/types/task.ts";
 
 function Category() {
   const { categoryId } = useParams();
-  const { currentCategory, loadCurrentCategory } = useAppStore();
+  const { getCurrentCategory, loadCurrentCategory } = useAppStore();
 
   useEffect(() => {
     (async () => {
@@ -17,7 +17,7 @@ function Category() {
     })();
   }, [categoryId, loadCurrentCategory]);
 
-  const tasks: TaskType[] = currentCategory?.tasks ?? [];
+  const tasks: TaskType[] = getCurrentCategory()?.tasks ?? [];
 
   return (
     <Fragment>
@@ -27,7 +27,7 @@ function Category() {
             <CategoryItem
               key={task.id}
               task={task}
-              title={currentCategory?.title}
+              title={getCurrentCategory()?.title}
             />
           );
         })}
