@@ -6,7 +6,7 @@ import { TaskType } from "@/types/task.ts";
 
 function CategoryItem({ task, title }: { task: TaskType; title?: string }) {
   const { categoryId } = useParams();
-  const isList = task.completed;
+  const isList = task.todos?.length > 1;
   const url = `/categories/${categoryId}/tasks`;
   return (
     <div className={s.item}>
@@ -20,7 +20,7 @@ function CategoryItem({ task, title }: { task: TaskType; title?: string }) {
             <Link to={url}>
               <div className={s.listBlock}>
                 <div className={s.list}>List</div>
-                <div className={s.text}>Order Tools2</div>
+                <div className={s.text}>{task.name}</div>
               </div>
             </Link>
           ) : (
