@@ -8,7 +8,7 @@ export abstract class AppStore {
   // abstract categories: CategoryType[];
   // abstract currentCategory: CategoryType | undefined;
   abstract loadCurrentCategory(id: string): Promise<void>;
-  abstract changeCurrentCategoryTaskStatus({
+  abstract updateTaskStatusInCurrentCategory({
     status,
     idCategory,
     idTask,

@@ -17,7 +17,7 @@ export const fetchCategoryById = async (id: string): Promise<CategoryType> => {
   return response.data;
 };
 
-export const changeCategoryTaskStatus = async ({
+export const updateCategoryTaskStatus = async ({
   status,
   idCategory,
   idTask,

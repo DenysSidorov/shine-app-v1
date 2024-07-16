@@ -7,12 +7,12 @@ import { useAppStore } from "@/hooks/useAppStore.tsx";
 
 function CategoryItem({ task, title }: { task: TaskType; title?: string }) {
   const { categoryId } = useParams();
-  const { changeCurrentCategoryTaskStatus } = useAppStore();
+  const { updateTaskStatusInCurrentCategory } = useAppStore();
   const isList = task.todos?.length > 1;
   const url = `/categories/${categoryId}/tasks`;
 
   const oneTaskClickHandler = () => {
-    changeCurrentCategoryTaskStatus({
+    updateTaskStatusInCurrentCategory({
       status: !task.completed,
       idCategory: String(categoryId),
       idTask: task.id,
