@@ -4,7 +4,7 @@ import TasksList from "@/sections/tasks-list";
 
 function Tasks() {
   const { categoryId } = useParams();
-  console.log("render tasks3", categoryId);
+  console.log("render categoryId", categoryId);
   return (
     <div className={s.tasks}>
       <TasksList />

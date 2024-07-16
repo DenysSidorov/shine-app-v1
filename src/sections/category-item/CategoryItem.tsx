@@ -3,11 +3,22 @@ import s from "./CategoryItem.module.scss";
 import { MdEdit } from "react-icons/md";
 import Checkbox from "@/components/checkbox";
 import { TaskType } from "@/types/task.ts";
+import { useAppStore } from "@/hooks/useAppStore.tsx";
 
 function CategoryItem({ task, title }: { task: TaskType; title?: string }) {
   const { categoryId } = useParams();
+  const { changeCurrentCategoryTaskStatus } = useAppStore();
   const isList = task.todos?.length > 1;
   const url = `/categories/${categoryId}/tasks`;
+
+  const oneTaskClickHandler = () => {
+    changeCurrentCategoryTaskStatus({
+      status: !task.completed,
+      idCategory: String(categoryId),
+      idTask: task.id,
+    });
+  };
+
   return (
     <div className={s.item}>
       <div className={s.mark} />
@@ -25,6 +36,7 @@ function CategoryItem({ task, title }: { task: TaskType; title?: string }) {
             </Link>
           ) : (
             <Checkbox
+              onChange={oneTaskClickHandler}
               label={task.name}
               name={task.id + task.name}
               value={task.completed}

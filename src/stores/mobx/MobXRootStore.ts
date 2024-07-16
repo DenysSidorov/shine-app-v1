@@ -9,8 +9,11 @@ class MobXRootStore implements AppStore {
 
   getCategories = MobXCategoriesStore.getCategories;
   loadCategories = MobXCategoriesStore.loadCategories;
+
   getCurrentCategory = MobXCategoriesStore.getCurrentCategory;
   loadCurrentCategory = MobXCategoriesStore.loadCurrentCategory;
+  changeCurrentCategoryTaskStatus =
+    MobXCategoriesStore.changeCurrentCategoryTaskStatus;
 
   // addTodo(todo: Todo): void {
   //   console.log(todo);

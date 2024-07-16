@@ -1,6 +1,7 @@
-import { makeAutoObservable, runInAction, toJS } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import * as categoryService from "@/services/CategoryService";
 import { CategoryType } from "@/types/category.ts";
+import { CategoryTaskStatusType } from "@/services/types.ts";
 
 class MobXCategoriesStore {
   categories: CategoryType[] = [];
@@ -17,7 +18,6 @@ class MobXCategoriesStore {
       runInAction(() => {
         this.categories = data;
       });
-      console.log(toJS(this.categories));
     } catch (error) {
       console.log(error);
       this.setError("Failed to load todos");
@@ -50,6 +50,27 @@ class MobXCategoriesStore {
 
   getCurrentCategory = (): CategoryType | undefined => {
     return this.currentCategory;
+  };
+
+  changeCurrentCategoryTaskStatus = async ({
+    status,
+    idCategory,
+    idTask,
+  }: CategoryTaskStatusType) => {
+    try {
+      const data = await categoryService.changeCategoryTaskStatus({
+        status,
+        idCategory,
+        idTask,
+      });
+
+      runInAction(() => {
+        this.currentCategory = data;
+      });
+    } catch (error) {
+      console.log(error);
+      this.setError("Failed to set task status");
+    }
   };
 
   // addTodo(todo: Todo): void {

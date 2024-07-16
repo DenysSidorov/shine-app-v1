@@ -1,8 +1,8 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import * as categoryService from "@/services/CategoryService";
 import { CategoryType } from "@/types/category.ts";
 
-class MobXRootStore {
+class MobXCategoriesStore {
   categories: CategoryType[] = [];
   currentCategory: CategoryType | undefined = undefined;
   error: string | null = null;
@@ -14,7 +14,9 @@ class MobXRootStore {
   loadCategories = async (): Promise<void> => {
     try {
       const data = await categoryService.fetchCategories();
-      this.categories = data;
+      runInAction(() => {
+        this.categories = data;
+      });
     } catch (error) {
       console.log(error);
       this.setError("Failed to load todos");
@@ -24,7 +26,9 @@ class MobXRootStore {
   loadCurrentCategory = async (id: string): Promise<void> => {
     try {
       const data = await categoryService.fetchCategoryById(id);
-      this.currentCategory = data;
+      runInAction(() => {
+        this.currentCategory = data;
+      });
     } catch (error) {
       console.log(error);
       this.setError("Failed to load todos");
@@ -39,9 +43,13 @@ class MobXRootStore {
     this.error = error;
   }
 
-  getCategories(): CategoryType[] {
+  getCategories = (): CategoryType[] => {
     return this.categories;
-  }
+  };
+
+  getCurrentCategory = (): CategoryType | undefined => {
+    return this.currentCategory;
+  };
 
   // addTodo(todo: Todo): void {
   //   console.log(todo);
@@ -54,4 +62,4 @@ class MobXRootStore {
   // }
 }
 
-export default MobXRootStore;
+export default new MobXCategoriesStore();

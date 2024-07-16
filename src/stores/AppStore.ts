@@ -1,4 +1,5 @@
 import { CategoryType } from "@/types/category.ts";
+import { CategoryTaskStatusType } from "@/services/types.ts";
 
 export abstract class AppStore {
   abstract getCategories(): CategoryType[];
@@ -7,6 +8,12 @@ export abstract class AppStore {
   // abstract categories: CategoryType[];
   // abstract currentCategory: CategoryType | undefined;
   abstract loadCurrentCategory(id: string): Promise<void>;
+  abstract changeCurrentCategoryTaskStatus({
+    status,
+    idCategory,
+    idTask,
+  }: CategoryTaskStatusType): Promise<void>;
+
   // abstract addTodo(todo: Todo): void;
   // abstract removeTodo(id: string): void;
 }
