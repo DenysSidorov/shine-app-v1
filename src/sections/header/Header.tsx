@@ -7,11 +7,7 @@ function Header() {
   return (
     <div className={s.header}>
       <div>
-        <Avatar
-          src={
-            "https://blog.logrocket.com/wp-content/uploads/2019/04/diogosouza.jpeg?w=150&h=150&crop=1"
-          }
-        />
+        <Avatar src={"https://blog.logrocket.com/wp-content/uploads/2019/04/diogosouza.jpeg?w=150&h=150&crop=1"} />
       </div>
       <div>
         <Title title={"Categories"} className={s.title} />

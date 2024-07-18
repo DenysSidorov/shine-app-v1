@@ -19,10 +19,7 @@ function CategoriesTypeListItem({ category }: CategoriesListItemI) {
   }, [tasks]);
 
   return (
-    <div
-      className={`noWrap ${s.block}`}
-      style={{ backgroundColor: category.color }}
-    >
+    <div className={`noWrap ${s.block}`} style={{ backgroundColor: category.color }}>
       <Link to={category.id}>
         <Title title={category.title} className={s.title} />
       </Link>

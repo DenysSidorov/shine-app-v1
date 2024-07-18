@@ -16,9 +16,11 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    'prettier/prettier': 'error',
+    // 'prettier/prettier': 'error',
     "react/react-in-jsx-scope": "off",
     "react/jsx-uses-react": "off",
+    'prettier/prettier': ['error', { printWidth: 120 }],
+    'max-len': ["error", { "code": 120 }]
   },
   parserOptions: {
     ecmaVersion: 2021,

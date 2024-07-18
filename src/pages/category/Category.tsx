@@ -23,13 +23,7 @@ function Category() {
     <Fragment>
       <div className={s.category}>
         {tasks.map((task: TaskType) => {
-          return (
-            <CategoryItem
-              key={task.id}
-              task={task}
-              title={getCurrentCategory()?.title}
-            />
-          );
+          return <CategoryItem key={task.id} task={task} title={getCurrentCategory()?.title} />;
         })}
         <AddNewItem />
       </div>

@@ -1,6 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import { AppStore } from "@/stores/AppStore.ts";
 import MobXCategoriesStore from "@/stores/mobx/categories-store/MobXCategoriesStore.ts";
+import MobXCategoryStore from "@/stores/mobx/category-store/MobXCategoryStore.ts";
 
 class MobXRootStore implements AppStore {
   constructor() {
@@ -10,10 +11,9 @@ class MobXRootStore implements AppStore {
   getCategories = MobXCategoriesStore.getCategories;
   loadCategories = MobXCategoriesStore.loadCategories;
 
-  getCurrentCategory = MobXCategoriesStore.getCurrentCategory;
-  loadCurrentCategory = MobXCategoriesStore.loadCurrentCategory;
-  updateTaskStatusInCurrentCategory =
-    MobXCategoriesStore.updateTaskStatusInCurrentCategory;
+  getCurrentCategory = MobXCategoryStore.getCurrentCategory;
+  loadCurrentCategory = MobXCategoryStore.loadCurrentCategory;
+  updateTaskStatusInCurrentCategory = MobXCategoryStore.updateTaskStatusInCurrentCategory;
 
   // addTodo(todo: Todo): void {
   //   console.log(todo);

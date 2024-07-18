@@ -7,8 +7,7 @@ const useZustandStore = create<AppStore>((set, get) => ({
   getCategories: () => {
     return get().todos;
   },
-  addTodo: (todo: Todo) =>
-    set((state: AppStore) => ({ todos: [...state.todos, todo] })),
+  addTodo: (todo: Todo) => set((state: AppStore) => ({ todos: [...state.todos, todo] })),
   removeTodo: () => ({}),
   // removeTodo: (id) => ({})
   // set((state) => ({ todos: state.todos.filter((todo) => todo.id !== id) })),

@@ -8,7 +8,5 @@ export const StoreProvider: React.FC<{
   store: AppStore;
   children: ReactNode;
 }> = ({ store, children }) => {
-  return (
-    <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
-  );
+  return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>;
 };

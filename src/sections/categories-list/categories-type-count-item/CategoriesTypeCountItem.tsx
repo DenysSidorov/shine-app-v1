@@ -12,10 +12,7 @@ interface CategoriesListItemI {
 function CategoriesTypeCountItem({ category }: CategoriesListItemI) {
   return (
     <Link to={category.id}>
-      <div
-        className={`noWrap ${s.block}`}
-        style={{ backgroundColor: category.color }}
-      >
+      <div className={`noWrap ${s.block}`} style={{ backgroundColor: category.color }}>
         <Title title={category.title} className={s.title} />
         <div className={s.separator} />
 

@@ -40,38 +40,19 @@ const Checkbox = ({
   return (
     <label
       htmlFor={name}
-      className={classNames(
-        s.checkbox,
-        className || "",
-        disabled && s.disabled,
-      )}
+      className={classNames(s.checkbox, className || "", disabled && s.disabled)}
       onClick={clickHandler}
       data-tooltip-id={`checkBox${name}`}
     >
       {!hideCheckbox && (
         <Fragment>
           <input type="checkbox" name={name} defaultChecked={value} />
-          <span
-            className={classNames(
-              checkboxClassName,
-              s.checkboxMask,
-              value && s.checked,
-              disabled && s.disabled,
-            )}
-          >
+          <span className={classNames(checkboxClassName, s.checkboxMask, value && s.checked, disabled && s.disabled)}>
             <FaCheck />
           </span>
         </Fragment>
       )}
-      <span
-        className={classNames(
-          "noWrap",
-          s.label,
-          labelClassName,
-          disabled && s.disabled,
-          completed && s.completed,
-        )}
-      >
+      <span className={classNames("noWrap", s.label, labelClassName, disabled && s.disabled, completed && s.completed)}>
         {label}
       </span>
     </label>
