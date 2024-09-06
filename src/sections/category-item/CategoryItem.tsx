@@ -8,7 +8,7 @@ import { useAppStore } from "@/hooks/useAppStore.tsx";
 function CategoryItem({ task, title }: { task: TaskType; title?: string }) {
   const { categoryId } = useParams();
   const { updateTaskStatusInCurrentCategory } = useAppStore();
-  const isList = task.todos?.length > 1;
+  const isList = !!task.todos?.length;
   const url = `/categories/${categoryId}/tasks`;
 
   const oneTaskClickHandler = () => {

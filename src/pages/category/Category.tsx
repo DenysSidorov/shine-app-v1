@@ -17,13 +17,14 @@ function Category() {
     })();
   }, [categoryId, loadCurrentCategory]);
 
-  const tasks: TaskType[] = getCurrentCategory()?.tasks ?? [];
+  const category = getCurrentCategory();
+  const tasks: TaskType[] = category?.tasks ?? [];
 
   return (
     <Fragment>
       <div className={s.category}>
         {tasks.map((task: TaskType) => {
-          return <CategoryItem key={task.id} task={task} title={getCurrentCategory()?.title} />;
+          return <CategoryItem key={task.id} task={task} title={category?.title} />;
         })}
         <AddNewItem />
       </div>
