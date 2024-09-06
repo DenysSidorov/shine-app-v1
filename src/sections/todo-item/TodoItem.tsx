@@ -1,8 +1,8 @@
-import s from "./TaskItem.module.scss";
+import s from "./TodoItem.module.scss";
 import { CiCircleRemove } from "react-icons/ci";
 import Checkbox from "@/components/checkbox";
 
-function TaskItem() {
+function TodoItem() {
   return (
     <div className={`noWrap ${s.wrapper}`}>
       <Checkbox
@@ -19,4 +19,4 @@ function TaskItem() {
   );
 }
 
-export default TaskItem;
+export default TodoItem;

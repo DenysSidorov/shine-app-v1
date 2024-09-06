@@ -1,15 +1,15 @@
 import { useParams } from "react-router-dom";
-import s from "./Tasks.module.scss";
-import TasksList from "@/sections/tasks-list";
+import s from "./Todos.module.scss";
+import TodoList from "@/sections/todo-list";
 
-function Tasks() {
+function Todos() {
   const { categoryId } = useParams();
   console.log("render categoryId", categoryId);
   return (
     <div className={s.tasks}>
-      <TasksList />
+      <TodoList />
     </div>
   );
 }
 
-export default Tasks;
+export default Todos;

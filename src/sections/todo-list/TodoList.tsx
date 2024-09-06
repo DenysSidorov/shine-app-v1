@@ -1,18 +1,18 @@
-import s from "./TasksList.module.scss";
-import TaskItem from "@/sections/task-item";
+import s from "./TodoList.module.scss";
+import TodoItem from "@/sections/todo-item";
 import CategoryTitle from "@/sections/category-title";
 import NewTask from "@/components/new-task";
 
-function TasksList() {
+function TodoList() {
   return (
     <div className={s.wrapper}>
       <CategoryTitle />
-      <TaskItem />
-      <TaskItem />
-      <TaskItem />
+      <TodoItem />
+      <TodoItem />
+      <TodoItem />
       <NewTask />
     </div>
   );
 }
 
-export default TasksList;
+export default TodoList;
