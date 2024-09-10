@@ -31,11 +31,11 @@ class MobXCategoriesStore {
     return this.categories;
   };
 
-  updateTaskStatusCategory = async ({ status, idCategory, idTask }: CategoryTaskStatusType) => {
+  updateTaskStatusCategory = async ({ status, categoryId, idTask }: CategoryTaskStatusType) => {
     try {
       const data: CategoryType = await categoryService.updateCategoryTaskStatus({
         status,
-        idCategory,
+        categoryId,
         idTask,
       });
 

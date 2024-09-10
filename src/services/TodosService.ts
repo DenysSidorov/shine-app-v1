@@ -1,31 +1,30 @@
 import axios from "axios";
-import { CategoryType } from "@/types/category.ts";
-import { CategoryTaskStatusType } from "@/services/types.ts";
+import { TodoType } from "@/types/todo.ts";
 
 const { SERVER_DOMAIN, SERVER_PORT } = process.env;
 const API_URL = ` ${SERVER_DOMAIN}:${SERVER_PORT}/api`;
 
-export const fetchCategories = async (): Promise<CategoryType[]> => {
+export const fetchTodos = async (): Promise<TodoType[]> => {
   const response = await axios.get(`${API_URL}/categories`);
-  return response.data.categories;
-};
-
-export const fetchCategoryById = async (id: string): Promise<CategoryType> => {
-  const response = await axios.get(`${API_URL}/categories/${id}`);
   return response.data;
 };
 
-export const updateCategoryTaskStatus = async ({
-  status,
-  categoryId,
-  idTask,
-}: CategoryTaskStatusType): Promise<CategoryType> => {
-  const response = await axios.patch(`${API_URL}/categories/${categoryId}`, {
-    status,
-    idTask,
-  });
-  return response.data;
-};
+// export const fetchCategoryById = async (id: string): Promise<CategoryType> => {
+//   const response = await axios.get(`${API_URL}/categories/${id}`);
+//   return response.data;
+// };
+//
+// export const updateCategoryTaskStatus = async ({
+//   status,
+//   categoryId,
+//   idTask,
+// }: CategoryTaskStatusType): Promise<CategoryType> => {
+//   const response = await axios.patch(`${API_URL}/categories/${categoryId}`, {
+//     status,
+//     idTask,
+//   });
+//   return response.data;
+// };
 
 // export const addTodo = async (todo: Todo): Promise<Todo> => {
 //   const response = await axios.post(API_URL, todo);

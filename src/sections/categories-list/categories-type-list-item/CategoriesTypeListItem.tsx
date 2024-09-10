@@ -24,7 +24,7 @@ function CategoriesTypeListItem({ category }: CategoriesListItemI) {
   const oneTaskClickHandler = async (task: TaskType) => {
     updateTaskStatusCategory({
       status: !task.completed,
-      idCategory: String(id),
+      categoryId: String(id),
       idTask: task.id,
     });
   };

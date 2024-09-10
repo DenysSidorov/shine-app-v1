@@ -1,20 +1,20 @@
 import { Link, useParams } from "react-router-dom";
-import s from "./CategoryItem.module.scss";
+import s from "./Task.module.scss";
 import { MdEdit } from "react-icons/md";
 import Checkbox from "@/components/checkbox";
 import { TaskType } from "@/types/task.ts";
 import { useAppStore } from "@/hooks/useAppStore.tsx";
 
-function CategoryItem({ task, title }: { task: TaskType; title?: string }) {
+function Task({ task, categoryTitle }: { task: TaskType; categoryTitle?: string }) {
   const { categoryId } = useParams();
   const { updateTaskStatusInCurrentCategory } = useAppStore();
   const isList = !!task.todos?.length;
-  const url = `/categories/${categoryId}/tasks`;
+  const url = `/categories/${categoryId}/todos`;
 
   const oneTaskClickHandler = () => {
     updateTaskStatusInCurrentCategory({
       status: !task.completed,
-      idCategory: String(categoryId),
+      categoryId: String(categoryId),
       idTask: task.id,
     });
   };
@@ -24,7 +24,7 @@ function CategoryItem({ task, title }: { task: TaskType; title?: string }) {
       <div className={s.mark} />
       <div className={`noWrap ${s.content}`}>
         <Link to={url}>
-          <div className={s.title}>{title}</div>
+          <div className={s.title}>{categoryTitle}</div>
         </Link>
         <div className={s.textWrapper}>
           {isList ? (
@@ -56,4 +56,4 @@ function CategoryItem({ task, title }: { task: TaskType; title?: string }) {
   );
 }
 
-export default CategoryItem;
+export default Task;

@@ -1,5 +1,10 @@
 export type CategoryTaskStatusType = {
   status: boolean;
-  idCategory: string;
+  categoryId: string;
+  idTask: string;
+};
+
+export type TaskTodosServiceType = {
+  categoryId: string;
   idTask: string;
 };
