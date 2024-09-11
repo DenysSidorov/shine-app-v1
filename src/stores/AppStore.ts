@@ -13,9 +13,8 @@ export abstract class AppStore {
   abstract loadCurrentCategory(id: string): Promise<void>;
   abstract updateTaskStatusInCurrentCategory({ status, categoryId, idTask }: CategoryTaskStatusType): Promise<void>;
 
-  abstract getCategoryTodos(): TodoType[];
-  abstract loadCategoryTodos({ categoryId, idTask }: TaskTodosServiceType): Promise<void>;
-
+  abstract getTaskTodos(): TodoType[] | undefined;
+  abstract loadTaskTodos({ categoryId, idTask }: TaskTodosServiceType): Promise<void>;
   // abstract addTodo(todo: Todo): void;
   // abstract removeTodo(id: string): void;
 }

@@ -9,7 +9,7 @@ function Task({ task, categoryTitle }: { task: TaskType; categoryTitle?: string 
   const { categoryId } = useParams();
   const { updateTaskStatusInCurrentCategory } = useAppStore();
   const isList = !!task.todos?.length;
-  const url = `/categories/${categoryId}/todos`;
+  const url = `/categories/${categoryId}/tasks/${task.id}`;
 
   const oneTaskClickHandler = () => {
     updateTaskStatusInCurrentCategory({

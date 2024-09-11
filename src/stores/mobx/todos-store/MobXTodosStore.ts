@@ -1,6 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import * as todosService from "@/services/TodosService.ts";
 import { TodoType } from "@/types/todo.ts";
+import { TaskTodosServiceType } from "@/services/types.ts";
 
 class MobXTodosStore {
   todos: TodoType[] = [];
@@ -10,9 +11,9 @@ class MobXTodosStore {
     makeAutoObservable(this);
   }
 
-  loadCategoryTodos = async (): Promise<void> => {
+  loadTaskTodos = async ({ categoryId, idTask }: TaskTodosServiceType): Promise<void> => {
     try {
-      const data: TodoType[] = await todosService.fetchTodos();
+      const data: TodoType[] = await todosService.fetchTodos(categoryId, idTask);
       runInAction(() => {
         this.todos = data;
       });
@@ -26,7 +27,7 @@ class MobXTodosStore {
     this.error = error;
   }
 
-  getCategoryTodos = (): TodoType[] => {
+  getTaskTodos = (): TodoType[] | undefined => {
     return this.todos;
   };
 

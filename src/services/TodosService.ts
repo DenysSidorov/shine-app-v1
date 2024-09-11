@@ -4,8 +4,9 @@ import { TodoType } from "@/types/todo.ts";
 const { SERVER_DOMAIN, SERVER_PORT } = process.env;
 const API_URL = ` ${SERVER_DOMAIN}:${SERVER_PORT}/api`;
 
-export const fetchTodos = async (): Promise<TodoType[]> => {
-  const response = await axios.get(`${API_URL}/categories`);
+export const fetchTodos = async (categoryId: string, idTask: string): Promise<TodoType[]> => {
+  const response = await axios.get(`${API_URL}/categories/${categoryId}/tasks/${idTask}/todos`);
+
   return response.data;
 };
 

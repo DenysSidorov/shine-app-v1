@@ -5,27 +5,33 @@ import CategoryTitle from "@/sections/category-title";
 import NewTask from "@/components/new-task";
 import { useAppStore } from "@/hooks/useAppStore.tsx";
 import { useEffect } from "react";
+import { observer } from "mobx-react";
+import { TodoType } from "@/types/todo.ts";
 function TodoList() {
-  const { categoryId } = useParams();
-  const { getCategoryTodos, loadCategoryTodos } = useAppStore();
+  const { categoryId, idTask } = useParams();
+  const { getTaskTodos, loadTaskTodos } = useAppStore();
 
   useEffect(() => {
     (async () => {
-      await loadCategoryTodos({ categoryId: categoryId ?? "", idTask: "122" });
+      await loadTaskTodos({ categoryId: categoryId ?? "", idTask: idTask ?? "" });
     })();
-  }, [categoryId, loadCategoryTodos]);
+  }, [categoryId, idTask, loadTaskTodos]);
 
-  const todos = getCategoryTodos();
+  const removeTodo = (id: string) => {
+    console.log(id);
+  };
+
+  const todos = getTaskTodos();
   console.log("todos: ", todos);
   return (
     <div className={s.wrapper}>
       <CategoryTitle />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
+      {todos?.map((todo: TodoType) => {
+        return <TodoItem key={todo.id} todo={todo} removeTodo={removeTodo} />;
+      })}
       <NewTask />
     </div>
   );
 }
 
-export default TodoList;
+export default observer(TodoList);

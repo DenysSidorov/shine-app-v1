@@ -29,7 +29,7 @@ const router = createBrowserRouter([
         element: <Category />,
       },
       {
-        path: "/categories/:categoryId/todos",
+        path: "/categories/:categoryId/tasks/:idTask",
         element: <Tasks />,
       },
     ],
