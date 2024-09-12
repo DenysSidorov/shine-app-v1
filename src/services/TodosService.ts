@@ -10,6 +10,22 @@ export const fetchTodos = async (categoryId: string, idTask: string): Promise<To
   return response.data;
 };
 
+export const fetchNewTodo = async (categoryId: string, idTask: string, text: string): Promise<boolean> => {
+  const response = await axios.post(`${API_URL}/categories/${categoryId}/tasks/${idTask}/todos`, { text });
+
+  return response.data;
+};
+
+export const fetchDeleteTodo = async (categoryId: string, idTask: string, idTodo: string): Promise<boolean> => {
+  const response = await axios.delete(`${API_URL}/categories/${categoryId}/tasks/${idTask}/todo`, {
+    data: {
+      idTodo,
+    },
+  });
+
+  return response.data;
+};
+
 // export const fetchCategoryById = async (id: string): Promise<CategoryType> => {
 //   const response = await axios.get(`${API_URL}/categories/${id}`);
 //   return response.data;

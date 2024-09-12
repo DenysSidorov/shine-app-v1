@@ -19,6 +19,8 @@ class MobXRootStore implements AppStore {
 
   loadTaskTodos = MobXTodosStore.loadTaskTodos;
   getTaskTodos = MobXTodosStore.getTaskTodos;
+  addNewTodo = MobXTodosStore.addNewTodo;
+  deleteTodo = MobXTodosStore.deleteTodo;
 
   /*
   ({categoryId, idTask}: TaskTodosServiceType): Promise<void> {

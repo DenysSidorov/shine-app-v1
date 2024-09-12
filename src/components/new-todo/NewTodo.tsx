@@ -1,15 +1,27 @@
-import { Fragment, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 import { GoCheckCircleFill } from "react-icons/go";
-import s from "./NewTask.module.scss";
+import s from "./NewTodo.module.scss";
 
-interface AddNewItemI {}
+interface AddNewItemI {
+  addNew: (text: string) => void;
+}
 
-function NewTask({}: AddNewItemI) {
+function NewTodo({ addNew }: AddNewItemI) {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [isInputMode, setIsInputMode] = useState<boolean>(false);
 
   const changeModeHandler = () => {
     setIsInputMode((state) => !state);
+  };
+
+  const addNewTodo = () => {
+    const text = inputRef.current?.value;
+    if (text) {
+      addNew(text);
+      inputRef.current.value = "";
+      changeModeHandler();
+    }
   };
 
   return (
@@ -18,9 +30,9 @@ function NewTask({}: AddNewItemI) {
         {isInputMode ? (
           <div className={s.inputContainer}>
             <div className={s.icon}>
-              <GoCheckCircleFill className={s.checkIcon} />
+              <GoCheckCircleFill className={s.checkIcon} onClick={() => addNewTodo()} />
             </div>
-            <input type="text" placeholder="New todo..." className={s.input} />
+            <input type="text" placeholder="New todo..." className={s.input} ref={inputRef} />
           </div>
         ) : (
           <div className={s.addMore} onClick={changeModeHandler}>
@@ -35,4 +47,4 @@ function NewTask({}: AddNewItemI) {
   );
 }
 
-export default NewTask;
+export default NewTodo;

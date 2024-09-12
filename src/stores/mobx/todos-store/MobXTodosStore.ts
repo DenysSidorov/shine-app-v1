@@ -1,7 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import * as todosService from "@/services/TodosService.ts";
 import { TodoType } from "@/types/todo.ts";
-import { TaskTodosServiceType } from "@/services/types.ts";
+import { AddTaskTodosServiceType, DeleteTodoServiceType, TaskTodosServiceType } from "@/services/types.ts";
 
 class MobXTodosStore {
   todos: TodoType[] = [];
@@ -20,6 +20,28 @@ class MobXTodosStore {
     } catch (error) {
       console.log(error);
       this.setError("Failed to load todos");
+    }
+  };
+
+  addNewTodo = async ({ categoryId, idTask, text }: AddTaskTodosServiceType): Promise<boolean> => {
+    try {
+      const data: boolean = await todosService.fetchNewTodo(categoryId, idTask, text);
+      return data;
+    } catch (error) {
+      console.log(error);
+      this.setError("Failed to add new todo");
+      return false;
+    }
+  };
+
+  deleteTodo = async ({ categoryId, idTask, idTodo }: DeleteTodoServiceType): Promise<boolean> => {
+    try {
+      const data: boolean = await todosService.fetchDeleteTodo(categoryId, idTask, idTodo);
+      return data;
+    } catch (error) {
+      console.log(error);
+      this.setError("Failed to delete todo");
+      return false;
     }
   };
 

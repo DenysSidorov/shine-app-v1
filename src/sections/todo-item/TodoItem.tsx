@@ -5,10 +5,10 @@ import { TodoType } from "@/types/todo.ts";
 
 interface TodoItemI {
   todo: TodoType;
-  removeTodo?: (id: string) => void;
+  removeTodo: (id: string) => void;
 }
 
-function TodoItem({ todo }: TodoItemI) {
+function TodoItem({ todo, removeTodo }: TodoItemI) {
   return (
     <div className={`noWrap ${s.wrapper}`}>
       <Checkbox
@@ -20,7 +20,7 @@ function TodoItem({ todo }: TodoItemI) {
         className={s.checkbox}
         checkboxClassName={s.checkboxClassName}
       />
-      <CiCircleRemove className={s.removeIcon} />
+      <CiCircleRemove className={s.removeIcon} onClick={() => removeTodo(todo.id)} />
     </div>
   );
 }
