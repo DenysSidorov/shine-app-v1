@@ -1,7 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import * as categoryService from "@/services/CategoryService";
 import { CategoryType } from "@/types/category.ts";
-import { CategoryTaskStatusType } from "@/services/types.ts";
+import { CategoryTaskStatusType, DeleteTaskServiceType } from "@/services/types.ts";
 
 class MobXCategoryStore {
   currentCategory: CategoryType | undefined = undefined;
@@ -49,6 +49,21 @@ class MobXCategoryStore {
     } catch (error) {
       console.log(error);
       this.setError("Failed to set task status");
+    }
+  };
+
+  removeTask = async ({ categoryId, idTask }: DeleteTaskServiceType): Promise<boolean> => {
+    try {
+      const data = await categoryService.fetchDeleteTask(categoryId, idTask);
+      console.log("==> data", data);
+      runInAction(() => {
+        this.loadCurrentCategory(categoryId);
+      });
+      return data as boolean;
+    } catch (error) {
+      console.log(error);
+      this.setError("Failed to set task status");
+      return false;
     }
   };
 }

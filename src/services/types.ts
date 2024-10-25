@@ -20,3 +20,15 @@ export type DeleteTodoServiceType = {
   idTask: string;
   idTodo: string;
 };
+
+export type DeleteTaskServiceType = {
+  categoryId: string;
+  idTask: string;
+};
+
+export type UpdateTodoStatusType = {
+  status: boolean;
+  categoryId: string;
+  idTask: string;
+  idTodo: string;
+};

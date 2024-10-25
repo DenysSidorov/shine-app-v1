@@ -1,7 +1,13 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import * as todosService from "@/services/TodosService.ts";
 import { TodoType } from "@/types/todo.ts";
-import { AddTaskTodosServiceType, DeleteTodoServiceType, TaskTodosServiceType } from "@/services/types.ts";
+import {
+  AddTaskTodosServiceType,
+  DeleteTodoServiceType,
+  TaskTodosServiceType,
+  UpdateTodoStatusType,
+} from "@/services/types.ts";
+import * as todoService from "@/services/TodosService.ts";
 
 class MobXTodosStore {
   todos: TodoType[] = [];
@@ -51,6 +57,22 @@ class MobXTodosStore {
 
   getTaskTodos = (): TodoType[] | undefined => {
     return this.todos;
+  };
+
+  updateTodoStatus = async ({ status, categoryId, idTask, idTodo }: UpdateTodoStatusType) => {
+    try {
+      const data: boolean = await todoService.updateTaskTodoStatus({
+        status,
+        categoryId,
+        idTask,
+        idTodo,
+      });
+      return data;
+    } catch (error) {
+      console.log(error);
+      this.setError("Failed to set task status");
+      return false;
+    }
   };
 
   // updateTaskStatusCategory = async ({ status, categoryId, idTask }: CategoryTaskStatusType) => {

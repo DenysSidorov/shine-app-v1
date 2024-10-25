@@ -6,9 +6,10 @@ import { TodoType } from "@/types/todo.ts";
 interface TodoItemI {
   todo: TodoType;
   removeTodo: (id: string) => void;
+  changeStatus: (id: string, completed: boolean) => void;
 }
 
-function TodoItem({ todo, removeTodo }: TodoItemI) {
+function TodoItem({ todo, removeTodo, changeStatus }: TodoItemI) {
   return (
     <div className={`noWrap ${s.wrapper}`}>
       <Checkbox
@@ -19,6 +20,7 @@ function TodoItem({ todo, removeTodo }: TodoItemI) {
         labelClassName={s.labelClassName}
         className={s.checkbox}
         checkboxClassName={s.checkboxClassName}
+        onChange={() => changeStatus(todo.id, todo.completed)}
       />
       <CiCircleRemove className={s.removeIcon} onClick={() => removeTodo(todo.id)} />
     </div>

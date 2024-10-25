@@ -1,5 +1,6 @@
 import axios from "axios";
 import { TodoType } from "@/types/todo.ts";
+import { UpdateTodoStatusType } from "@/services/types.ts";
 
 const { SERVER_DOMAIN, SERVER_PORT } = process.env;
 const API_URL = ` ${SERVER_DOMAIN}:${SERVER_PORT}/api`;
@@ -23,6 +24,20 @@ export const fetchDeleteTodo = async (categoryId: string, idTask: string, idTodo
     },
   });
 
+  return response.data;
+};
+
+export const updateTaskTodoStatus = async ({
+  status,
+  categoryId,
+  idTask,
+  idTodo,
+}: UpdateTodoStatusType): Promise<boolean> => {
+  const response = await axios.patch(`${API_URL}/categories/${categoryId}/tasks/${idTask}/todo`, {
+    status,
+    idTask,
+    idTodo,
+  });
   return response.data;
 };
 
