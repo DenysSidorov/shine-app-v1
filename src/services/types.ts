@@ -32,3 +32,7 @@ export type UpdateTodoStatusType = {
   idTask: string;
   idTodo: string;
 };
+
+export type SetActionsTaskIdType = {
+  id: string;
+};

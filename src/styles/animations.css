@@ -1,0 +1,30 @@
+/*ANIMATION FOR HIDE/SHOW BLOCKS (OPACITY)  START*/
+
+.todoAppear-appear {
+  opacity: 0.01;
+}
+
+.todoAppear-appear.todoAppear-appear-active {
+  opacity: 1;
+  transition: opacity 0.2s ease-in;
+}
+
+.todoAppear-enter {
+  opacity: 0.01;
+}
+
+.todoAppear-enter.todoAppear-enter-active {
+  opacity: 1;
+  transition: opacity 0.2s ease-in;
+}
+
+.todoAppear-exit {
+  opacity: 1;
+}
+
+.todoAppear-exit.todoAppear-exit-active {
+  opacity: 0.01;
+  transition: opacity 0.2s ease-in;
+}
+
+/*ANIMATION FOR HIDE/SHOW BLOCKS (OPACITY)  END*/

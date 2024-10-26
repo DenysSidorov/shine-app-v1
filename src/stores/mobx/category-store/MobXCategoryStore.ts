@@ -1,10 +1,11 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import * as categoryService from "@/services/CategoryService";
 import { CategoryType } from "@/types/category.ts";
-import { CategoryTaskStatusType, DeleteTaskServiceType } from "@/services/types.ts";
+import { CategoryTaskStatusType, DeleteTaskServiceType, SetActionsTaskIdType } from "@/services/types.ts";
 
 class MobXCategoryStore {
   currentCategory: CategoryType | undefined = undefined;
+  activeActionsId: string = "";
   error: string | null = null;
 
   constructor() {
@@ -65,6 +66,14 @@ class MobXCategoryStore {
       this.setError("Failed to set task status");
       return false;
     }
+  };
+
+  setActionsTaskId = ({ id }: SetActionsTaskIdType): void => {
+    this.activeActionsId = id;
+  };
+
+  getActionsTaskId = (): string => {
+    return this.activeActionsId;
   };
 }
 

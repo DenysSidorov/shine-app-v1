@@ -4,8 +4,10 @@ import {
   CategoryTaskStatusType,
   DeleteTaskServiceType,
   DeleteTodoServiceType,
-  TaskTodosServiceType, UpdateTodoStatusType
-} from '@/services/types.ts';
+  SetActionsTaskIdType,
+  TaskTodosServiceType,
+  UpdateTodoStatusType,
+} from "@/services/types.ts";
 import { TodoType } from "@/types/todo.ts";
 
 export abstract class AppStore {
@@ -23,6 +25,8 @@ export abstract class AppStore {
   abstract addNewTodo({ categoryId, idTask, text }: AddTaskTodosServiceType): Promise<boolean>;
   abstract deleteTodo({ categoryId, idTask, idTodo }: DeleteTodoServiceType): Promise<boolean>;
   abstract updateTodoStatus({ status, categoryId, idTask, idTodo }: UpdateTodoStatusType): Promise<boolean>;
+  abstract setActionsTaskId({ id }: SetActionsTaskIdType): void;
+  abstract getActionsTaskId(): string;
   // abstract addTodo(todo: Todo): void;
   // abstract removeTodo(id: string): void;
 }

@@ -9,13 +9,17 @@ import Task from "@/sections/task";
 
 function Category() {
   const { categoryId } = useParams();
-  const { getCurrentCategory, loadCurrentCategory } = useAppStore();
+  const { getCurrentCategory, loadCurrentCategory, setActionsTaskId } = useAppStore();
 
   useEffect(() => {
     (async () => {
       await loadCurrentCategory(categoryId ?? "");
     })();
   }, [categoryId, loadCurrentCategory]);
+
+  useEffect(() => {
+    return () => setActionsTaskId({ id: "" });
+  }, [setActionsTaskId]);
 
   const category = getCurrentCategory();
   const tasks: TaskType[] = category?.tasks ?? [];

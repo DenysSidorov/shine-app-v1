@@ -16,6 +16,8 @@ class MobXRootStore implements AppStore {
   getCurrentCategory = MobXCategoryStore.getCurrentCategory;
   loadCurrentCategory = MobXCategoryStore.loadCurrentCategory;
   updateTaskStatusInCurrentCategory = MobXCategoryStore.updateTaskStatusInCurrentCategory;
+  setActionsTaskId = MobXCategoryStore.setActionsTaskId;
+  getActionsTaskId = MobXCategoryStore.getActionsTaskId;
   removeTask = MobXCategoryStore.removeTask;
 
   loadTaskTodos = MobXTodosStore.loadTaskTodos;
