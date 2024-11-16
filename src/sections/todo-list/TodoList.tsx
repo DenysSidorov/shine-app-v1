@@ -4,15 +4,29 @@ import TodoItem from "@/sections/todo-item";
 import CategoryTitle from "@/sections/category-title";
 import NewTodo from "@/components/new-todo";
 import { useAppStore } from "@/hooks/useAppStore.tsx";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { observer } from "mobx-react";
 import { TodoType } from "@/types/todo.ts";
+import { TaskType } from "@/types/task.ts";
 
 function TodoList() {
   const { categoryId = "", idTask = "" } = useParams();
-  const { getTaskTodos, loadTaskTodos, addNewTodo, deleteTodo, removeTask, updateTodoStatus } = useAppStore();
+  const {
+    getTaskTodos,
+    loadTaskTodos,
+    addNewTodo,
+    deleteTodo,
+    removeTask,
+    updateTodoStatus,
+    loadCurrentCategory,
+    getCurrentCategory,
+  } = useAppStore();
   const navigate = useNavigate();
   const [isRemovingTaskWithTodos, setIsRemovingTaskWithTodos] = useState<boolean>(false);
+
+  useEffect(() => {
+    loadCurrentCategory(categoryId);
+  }, [loadCurrentCategory, categoryId]);
 
   useEffect(() => {
     (async () => {
@@ -22,7 +36,6 @@ function TodoList() {
 
   const removeTodo = async (idTodo: string) => {
     const result = await deleteTodo({ categoryId: categoryId ?? "", idTodo, idTask: idTask ?? "" });
-    console.log(result);
     if (result) {
       await loadTaskTodos({ categoryId: categoryId ?? "", idTask: idTask ?? "" });
     }
@@ -46,17 +59,29 @@ function TodoList() {
 
   const changeStatus = async (id: string, completed: boolean) => {
     const response = await updateTodoStatus({ status: !completed, idTodo: id, categoryId, idTask });
-    console.log("resp => ", response);
     if (response) {
       await loadTaskTodos({ categoryId: categoryId ?? "", idTask: idTask ?? "" });
     }
   };
 
   const todos = getTaskTodos();
-  console.log("todos: ", todos);
+  const category = getCurrentCategory();
+
+  const name = useMemo(() => {
+    if (category) {
+      const currentTask = category?.tasks?.find((task: TaskType) => String(task.id) === String(idTask));
+      return currentTask?.name;
+    }
+    return undefined;
+  }, [category, idTask]);
+
   return (
     <div className={s.wrapper}>
-      <CategoryTitle removeAction={removeTaskWithTodos} isRemovingTaskWithTodos={isRemovingTaskWithTodos} />
+      <CategoryTitle
+        removeAction={removeTaskWithTodos}
+        isRemovingTaskWithTodos={isRemovingTaskWithTodos}
+        title={name}
+      />
       {todos?.map((todo: TodoType) => {
         return <TodoItem key={todo.id} todo={todo} removeTodo={removeTodo} changeStatus={changeStatus} />;
       })}

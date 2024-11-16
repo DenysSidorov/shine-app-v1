@@ -6,10 +6,11 @@ import { useCallback } from "react";
 interface CategoryTitleI {
   isRemovingTaskWithTodos?: boolean;
   removeAction: () => void;
+  title?: string;
 }
 
 //
-function CategoryTitle({ removeAction, isRemovingTaskWithTodos }: CategoryTitleI) {
+function CategoryTitle({ removeAction, isRemovingTaskWithTodos, title = "Title" }: CategoryTitleI) {
   const handleRemoveAction = useCallback(() => {
     removeAction();
   }, [removeAction]);
@@ -18,7 +19,7 @@ function CategoryTitle({ removeAction, isRemovingTaskWithTodos }: CategoryTitleI
     <div className={s.items}>
       <div className={`noWrap ${s.content}`}>
         <div className={`noWrap ${s.title}`}>Garage</div>
-        <div className={`noWrap ${s.text}`}>Buy wheels</div>
+        <div className={`noWrap ${s.text}`}>{title}</div>
         <div className={s.date}>at 06:30PM </div>
       </div>
 

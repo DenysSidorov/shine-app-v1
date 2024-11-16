@@ -9,7 +9,7 @@ import TaskActions from "@/sections/task-actions";
 import { observer } from "mobx-react";
 import TransitionWrapper from "@/hocs/TransitionWrapper.tsx";
 
-function Task({ task, categoryTitle }: { task: TaskType; categoryTitle?: string }) {
+const Task = observer(({ task, categoryTitle }: { task: TaskType; categoryTitle?: string }) => {
   const { categoryId = "" } = useParams();
   const { updateTaskStatusInCurrentCategory, setActionsTaskId, getActionsTaskId } = useAppStore();
   const isList = !!task.todos?.length;
@@ -71,6 +71,6 @@ function Task({ task, categoryTitle }: { task: TaskType; categoryTitle?: string 
       </div>
     </Fragment>
   );
-}
+});
 
-export default observer(Task);
+export default Task;
