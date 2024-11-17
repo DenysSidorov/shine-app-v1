@@ -43,12 +43,13 @@ function CategoriesTypeListItem({ category }: CategoriesListItemI) {
             onChange={() => {
               !task?.todos ? oneTaskClickHandler(task) : () => {};
             }}
-            label={!task?.todos ? task.name : `LIST: ${task.name}`}
+            label={!task?.todos ? task.name : `${task.todos?.length}: ${task.name}`}
             name={task.id + task.name}
             completed={task.completed}
             labelClassName={s.labelClassName}
             value={task.completed}
             className={s.checkbox}
+            hideCheckbox={!!task.todos?.length}
           />
         </div>
       ))}

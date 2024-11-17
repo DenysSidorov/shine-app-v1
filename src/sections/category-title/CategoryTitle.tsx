@@ -2,15 +2,18 @@ import s from "./CategoryTitle.module.scss";
 import { MdDelete } from "react-icons/md";
 import { VscLoading } from "react-icons/vsc";
 import { useCallback } from "react";
+import { TaskType } from "@/types/task.ts";
+
+export type TaskWithCategoryTitle = Partial<TaskType & { categoryTitle: string }>;
 
 interface CategoryTitleI {
   isRemovingTaskWithTodos?: boolean;
   removeAction: () => void;
-  title?: string;
+  task?: TaskWithCategoryTitle;
 }
 
 //
-function CategoryTitle({ removeAction, isRemovingTaskWithTodos, title = "Title" }: CategoryTitleI) {
+function CategoryTitle({ removeAction, isRemovingTaskWithTodos, task = {} as TaskWithCategoryTitle }: CategoryTitleI) {
   const handleRemoveAction = useCallback(() => {
     removeAction();
   }, [removeAction]);
@@ -18,9 +21,9 @@ function CategoryTitle({ removeAction, isRemovingTaskWithTodos, title = "Title" 
   return (
     <div className={s.items}>
       <div className={`noWrap ${s.content}`}>
-        <div className={`noWrap ${s.title}`}>Garage</div>
-        <div className={`noWrap ${s.text}`}>{title}</div>
-        <div className={s.date}>at 06:30PM </div>
+        <div className={`noWrap ${s.title}`}>{task?.categoryTitle}</div>
+        <div className={`noWrap ${s.text}`}>{task?.name}</div>
+        <div className={s.date}>{String(task?.date)}</div>
       </div>
 
       <div className={s.action}>

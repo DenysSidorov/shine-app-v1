@@ -14,3 +14,12 @@
   font-size: 30px;
   color: $colTextGrey;
 }
+
+.navigator {
+  color: $colTextGrey;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 12px;
+  cursor: pointer;
+}

@@ -8,8 +8,9 @@ import { useEffect, useMemo, useState } from "react";
 import { observer } from "mobx-react";
 import { TodoType } from "@/types/todo.ts";
 import { TaskType } from "@/types/task.ts";
+import { TaskWithCategoryTitle } from "@/sections/category-title/CategoryTitle.tsx";
 
-function TodoList() {
+const TodoList = observer(() => {
   const { categoryId = "", idTask = "" } = useParams();
   const {
     getTaskTodos,
@@ -43,7 +44,6 @@ function TodoList() {
 
   const addNew = async (text: string) => {
     const result = await addNewTodo({ categoryId: categoryId ?? "", text, idTask: idTask ?? "" });
-    console.log(result);
     if (result) {
       await loadTaskTodos({ categoryId: categoryId ?? "", idTask: idTask ?? "" });
     }
@@ -67,27 +67,23 @@ function TodoList() {
   const todos = getTaskTodos();
   const category = getCurrentCategory();
 
-  const name = useMemo(() => {
+  const task: TaskWithCategoryTitle = useMemo(() => {
     if (category) {
       const currentTask = category?.tasks?.find((task: TaskType) => String(task.id) === String(idTask));
-      return currentTask?.name;
+      return { ...currentTask, categoryTitle: category.title };
     }
-    return undefined;
+    return {} as TaskWithCategoryTitle;
   }, [category, idTask]);
 
   return (
     <div className={s.wrapper}>
-      <CategoryTitle
-        removeAction={removeTaskWithTodos}
-        isRemovingTaskWithTodos={isRemovingTaskWithTodos}
-        title={name}
-      />
+      <CategoryTitle removeAction={removeTaskWithTodos} isRemovingTaskWithTodos={isRemovingTaskWithTodos} task={task} />
       {todos?.map((todo: TodoType) => {
         return <TodoItem key={todo.id} todo={todo} removeTodo={removeTodo} changeStatus={changeStatus} />;
       })}
       <NewTodo addNew={addNew} />
     </div>
   );
-}
+});
 
-export default observer(TodoList);
+export default TodoList;

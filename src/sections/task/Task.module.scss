@@ -13,9 +13,9 @@
 }
 
 .mark {
-  background: #50E3C2;
   width: 4px;
   height: 100%;
+  flex-shrink: 0;
 }
 
 .content {
@@ -67,9 +67,11 @@
   display: flex;
   align-items: center;
   .list {
-    color: $colInfoElementOrange;
-    transform: rotate(-30deg);
+    color: $colBlack;
     font-weight: 700;
+    border-radius: 50%;
+    border: 1px solid $colDate;
+    padding: 1px 3px;
   }
   .text {
     color: $colDate;
@@ -90,4 +92,8 @@
     height: 24px;
     width: 24px;
   }
+}
+
+.checked {
+  text-decoration: line-through;
 }
