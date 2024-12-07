@@ -5,6 +5,7 @@ import Categories from "@/pages/categories/Categories.tsx";
 import ErrorPage from "@/pages/Error.tsx";
 import Category from "@/pages/category/Category.tsx";
 import Todos from "@/pages/todos/Todos.tsx";
+import TaskNew from "@/sections/task-new";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/categories/:categoryId/todos/:idTask",
         element: <Todos />,
+      },
+      {
+        path: "/categories/new-task",
+        element: <TaskNew />,
       },
     ],
   },

@@ -3,7 +3,7 @@ import CategoriesTypeListItem from "@/sections/categories-list/categories-type-l
 import CategoriesTypeCountItem from "@/sections/categories-list/categories-type-count-item";
 import { CategoryCountType, CategoryListType, CategoryType } from "@/types/category.ts";
 import { Fragment, useEffect } from "react";
-import AddNewItem from "@/components/add-new-item";
+// import AddNewItem from "@/components/add-new-item";
 import { useAppStore } from "@/hooks/useAppStore.tsx";
 import { observer } from "mobx-react";
 
@@ -28,7 +28,7 @@ function CategoriesList() {
           }
         })}
       </div>
-      <AddNewItem />
+      {/*<AddNewItem />*/}
     </Fragment>
   );
 }

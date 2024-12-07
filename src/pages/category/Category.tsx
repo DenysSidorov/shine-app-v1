@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import s from "./Category.module.scss";
 import { Fragment, useEffect } from "react";
-import AddNewItem from "@/components/add-new-item";
+// import AddNewItem from "@/components/add-new-item";
 import { useAppStore } from "@/hooks/useAppStore.tsx";
 import { observer } from "mobx-react";
 import { TaskType } from "@/types/task.ts";
@@ -30,7 +30,7 @@ function Category() {
         {tasks.map((task: TaskType) => {
           return <Task key={task.id} task={task} categoryTitle={category?.title} color={category?.color} />;
         })}
-        <AddNewItem />
+        {/*<AddNewItem />*/}
       </div>
     </Fragment>
   );

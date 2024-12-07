@@ -1,9 +1,9 @@
 @import "src/styles/variables";
 
 .wrapper {
-  position: sticky;
-  top: calc(100vh - 100px);
-  margin-left: calc(100% - 102px);
+  position: fixed;
+  top: calc(100% - 85px);
+  margin-left: 285px;
   height: 72px;
   cursor: pointer;
   width: 72px;
