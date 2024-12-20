@@ -1,0 +1,55 @@
+@import "src/styles/variables";
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.wrapper {
+  position: fixed;
+  top: calc(100% - 85px);
+  margin-left: 285px;
+  height: 72px;
+  cursor: pointer;
+  width: 72px;
+  background-color: $colInteractiveElementBlue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: all ease 0.6s;
+
+  & > svg {
+    color: $colWhite;
+    height: 30px;
+    width: 30px;
+    transition: all ease 0.4s;
+  }
+
+  &:hover {
+    & > svg {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.notReady {
+  background-color: $colTextGreyLight;
+}
+
+.readyForSave {
+  background-color: $colInteractiveElementGreen;
+}
+
+.addNew {
+  background-color: $colInteractiveElementBlue;
+}
+
+.inProgress {
+  background-color: $colInfoElementOrange;
+  animation: rotate 2s linear infinite;
+}

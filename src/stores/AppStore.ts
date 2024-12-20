@@ -27,8 +27,19 @@ export abstract class AppStore {
   abstract updateTodoStatus({ status, categoryId, idTask, idTodo }: UpdateTodoStatusType): Promise<boolean>;
   abstract setActionsTaskId({ id }: SetActionsTaskIdType): void;
   abstract getActionsTaskId(): string;
-  // abstract addTodo(todo: Todo): void;
-  // abstract removeTodo(id: string): void;
+
+  abstract addNewTodoForNewTask(title: string): void;
+  abstract removeTodoForNewTask(id: string): void;
+  abstract changeStatusTodoForNewTask(id: string, completed: boolean): void;
+  abstract getTodosOfNewTask(): TodoType[];
+  abstract initCategoryIdForNewTask(id: string): void;
+  abstract saveNewTask(): Promise<boolean>;
+  abstract setNewTitle(title: string): void;
+  abstract getNewTitle(): string;
+  abstract setIsLoadingNewTaskStatus(isLoading: boolean): void;
+  abstract getIsLoadingNewTaskStatus(): boolean;
+  abstract getCategoryIdOfNewTask(): string;
+  abstract resetNewTask(): void;
 }
 
 export interface Todo {

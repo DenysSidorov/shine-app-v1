@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Header from "@/sections/header";
 import s from "./PageLayout.module.scss";
-import AddNewItem from "@/components/add-new-item";
+import AddNewTask from "@/components/add-new-task";
 
 function PageLayout() {
   return (
@@ -11,7 +11,7 @@ function PageLayout() {
       </div>
       <div className={s.content}>
         <Outlet />
-        <AddNewItem />
+        <AddNewTask />
       </div>
     </div>
   );

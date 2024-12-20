@@ -4,12 +4,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   //background-color: palevioletred;
 }
 
 .content {
   background-color: #ffa5001a;
-  min-height: 800px;
+  height: 100%;
   width: 375px;
   display: flex;
+  flex-grow: 1;
 }

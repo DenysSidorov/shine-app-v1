@@ -34,7 +34,7 @@ const router = createBrowserRouter([
         element: <Todos />,
       },
       {
-        path: "/categories/new-task",
+        path: "/categories/:categoryId/new-task",
         element: <TaskNew />,
       },
     ],

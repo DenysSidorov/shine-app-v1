@@ -20,8 +20,8 @@ function NewTodo({ addNew }: AddNewItemI) {
     if (text) {
       addNew(text);
       inputRef.current.value = "";
-      changeModeHandler();
     }
+    changeModeHandler();
   };
 
   return (
