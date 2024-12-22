@@ -15,6 +15,7 @@ const TaskNew = observer(() => {
     changeStatusTodoForNewTask,
     getTodosOfNewTask,
     initCategoryIdForNewTask,
+    resetNewTask,
   } = useAppStore();
 
   const todos = getTodosOfNewTask();
@@ -23,6 +24,12 @@ const TaskNew = observer(() => {
   useEffect(() => {
     initCategoryIdForNewTask(categoryId || "");
   }, [categoryId, initCategoryIdForNewTask]);
+
+  useEffect(() => {
+    return () => {
+      resetNewTask();
+    };
+  }, [resetNewTask]);
 
   return (
     <div className={s.wrapper}>

@@ -21,9 +21,9 @@ function AddNewTask({}: AddNewTaskI) {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const { categoryId } = useParams();
-  const isNewTaskRoute = pathname.includes("/categories") && pathname.includes("/new-task");
-
   const { getNewTitle, getIsLoadingNewTaskStatus, saveNewTask } = useAppStore();
+
+  const isNewTaskRoute = pathname.includes("/categories") && pathname.includes("/new-task");
 
   const getStatus = () => {
     if (isNewTaskRoute) {
@@ -73,7 +73,10 @@ function AddNewTask({}: AddNewTaskI) {
     } else {
       if (status !== Statuses.IN_PROGRESS) {
         const response = await saveNewTask();
-        console.log(response);
+        console.log("response", response);
+        if (response === true) {
+          navigate(`/categories/${categoryId}`);
+        }
       }
     }
   };
