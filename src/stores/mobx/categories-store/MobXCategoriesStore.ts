@@ -31,6 +31,19 @@ class MobXCategoriesStore {
     return this.categories;
   };
 
+  addNewCategory = async (): Promise<void> => {
+    try {
+      const data: CategoryType = await categoryService.fetchAddNewCategory();
+
+      runInAction(() => {
+        this.categories.push(data);
+      });
+    } catch (error) {
+      console.log(error);
+      this.setError("Failed to set task status");
+    }
+  };
+
   updateTaskStatusCategory = async ({ status, categoryId, idTask }: CategoryTaskStatusType) => {
     try {
       const data: CategoryType = await categoryService.updateCategoryTaskStatus({

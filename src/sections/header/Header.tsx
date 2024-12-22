@@ -16,7 +16,7 @@ function Header() {
     } else if (!pathname.includes("todos") && !isMainPage) {
       return "Tasks";
     }
-    return "Main";
+    return "Home";
   }, [isMainPage, pathname]);
 
   return (

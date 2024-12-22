@@ -27,6 +27,11 @@ export const updateCategoryTaskStatus = async ({
   return response.data;
 };
 
+export const fetchAddNewCategory = async (): Promise<CategoryType> => {
+  const response = await axios.post(`${API_URL}/categories`);
+  return response.data;
+};
+
 export const fetchDeleteTask = async (categoryId: string, idTask: string): Promise<boolean> => {
   const response = await axios.delete(`${API_URL}/categories/${categoryId}/tasks/${idTask}`);
   return response.data;

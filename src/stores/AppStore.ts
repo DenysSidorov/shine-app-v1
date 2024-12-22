@@ -40,6 +40,8 @@ export abstract class AppStore {
   abstract getIsLoadingNewTaskStatus(): boolean;
   abstract getCategoryIdOfNewTask(): string;
   abstract resetNewTask(): void;
+
+  abstract addNewCategory(): Promise<void>;
 }
 
 export interface Todo {

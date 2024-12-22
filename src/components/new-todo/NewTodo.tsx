@@ -12,6 +12,13 @@ function NewTodo({ addNew }: AddNewItemI) {
   const [isInputMode, setIsInputMode] = useState<boolean>(false);
 
   const changeModeHandler = () => {
+    if (!isInputMode) {
+      setTimeout(() => {
+        if (inputRef.current) {
+          inputRef.current.focus();
+        }
+      }, 200);
+    }
     setIsInputMode((state) => !state);
   };
 
