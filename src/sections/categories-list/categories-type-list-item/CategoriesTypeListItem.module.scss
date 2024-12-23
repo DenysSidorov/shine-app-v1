@@ -4,6 +4,37 @@
   border-radius: 16px;
   height: 205px;
   padding: 16px;
+  position: relative;
+}
+
+.editBlock {
+  position: absolute;
+  border-radius: 50%;
+  top: calc(100% - 40px);
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(128 128 128 / 40%);
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgb(128 128 128 / 30%);
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  & > svg {
+    transition: all 0.3s ease;
+    color: $colWhite;
+    font-size: 16px;
+  }
+
+  &:hover {
+    background-color: rgb(128 128 128 / 60%);
+
+    & > svg {
+      transform: scale(1.1) rotate(10deg);
+    }
+  }
 }
 
 .title {

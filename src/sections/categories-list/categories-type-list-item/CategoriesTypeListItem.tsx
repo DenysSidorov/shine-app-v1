@@ -6,6 +6,7 @@ import Checkbox from "@/components/checkbox";
 import { useMemo } from "react";
 import { useAppStore } from "@/hooks/useAppStore.tsx";
 import { TaskType } from "@/types/task.ts";
+import { MdEdit } from "react-icons/md";
 
 interface CategoriesListItemI {
   category: CategoryListType;
@@ -32,8 +33,12 @@ function CategoriesTypeListItem({ category }: CategoriesListItemI) {
   return (
     <div className={`noWrap ${s.block}`} style={{ backgroundColor: category.color }}>
       <Link to={category.id}>
-        <Title title={category.title} className={s.title} />
+        <div className={s.editBlock}>
+          <MdEdit className={s.editIcon} />
+        </div>
       </Link>
+
+      <Title title={category.title} className={s.title} />
 
       <div className={s.separator} />
 

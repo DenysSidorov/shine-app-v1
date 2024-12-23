@@ -70,7 +70,7 @@ const TodoList = observer(() => {
   const task: TaskWithCategoryTitle = useMemo(() => {
     if (category) {
       const currentTask = category?.tasks?.find((task: TaskType) => String(task.id) === String(idTask));
-      return { ...currentTask, categoryTitle: category.title };
+      return { ...currentTask, categoryTitle: category.title, color: category.color };
     }
     return {} as TaskWithCategoryTitle;
   }, [category, idTask]);

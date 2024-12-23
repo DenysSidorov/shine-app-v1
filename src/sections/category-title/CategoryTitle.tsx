@@ -4,7 +4,7 @@ import { VscLoading } from "react-icons/vsc";
 import { useCallback } from "react";
 import { TaskType } from "@/types/task.ts";
 
-export type TaskWithCategoryTitle = Partial<TaskType & { categoryTitle: string }>;
+export type TaskWithCategoryTitle = Partial<TaskType & { categoryTitle: string; color: string }>;
 
 interface CategoryTitleI {
   isRemovingTaskWithTodos?: boolean;
@@ -18,10 +18,14 @@ function CategoryTitle({ removeAction, isRemovingTaskWithTodos, task = {} as Tas
     removeAction();
   }, [removeAction]);
 
+  const titleColor = task?.color || "#000";
+
   return (
     <div className={s.items}>
       <div className={`noWrap ${s.content}`}>
-        <div className={`noWrap ${s.title}`}>{task?.categoryTitle}</div>
+        <div className={`noWrap ${s.title}`} style={{ color: titleColor }}>
+          {task?.categoryTitle}
+        </div>
         <div className={`noWrap ${s.text}`}>{task?.name}</div>
         <div className={s.date}>{String(task?.date)}</div>
       </div>

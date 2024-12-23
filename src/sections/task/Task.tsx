@@ -64,7 +64,9 @@ const Task = observer(
           <div className={s.mark} style={{ background: color }} />
           <div className={`noWrap ${s.content}`}>
             <Link to={url}>
-              <div className={s.title}>{categoryTitle}</div>
+              <div className={s.title} style={{ color: color }}>
+                {categoryTitle}
+              </div>
             </Link>
             <div className={s.textWrapper}>
               {isList ? (

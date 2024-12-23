@@ -5,15 +5,16 @@ import { observer } from "mobx-react";
 
 function NewItem() {
   const { pathname } = useLocation();
+  console.log(pathname);
 
-  const isNewTaskRoute = pathname.includes("/categories") && pathname.includes("/new-task");
+  const isCategoriesRoute = pathname === "/categories";
 
-  if (isNewTaskRoute) {
-    return <AddNewTask />;
+  if (isCategoriesRoute) {
+    return <AddNewCategory />;
   }
 
-  if (!isNewTaskRoute) {
-    return <AddNewCategory />;
+  if (!isCategoriesRoute) {
+    return <AddNewTask />;
   }
 
   return null;
