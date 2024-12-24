@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import s from "./CategoriesTypeListItem.module.scss";
 import { CategoryListType } from "@/types/category.ts";
+import { MdOutlineReadMore } from "react-icons/md";
 import Title from "@/components/title";
 import Checkbox from "@/components/checkbox";
 import { useMemo } from "react";
 import { useAppStore } from "@/hooks/useAppStore.tsx";
 import { TaskType } from "@/types/task.ts";
-import { MdEdit } from "react-icons/md";
 
 interface CategoriesListItemI {
   category: CategoryListType;
@@ -15,7 +15,7 @@ interface CategoriesListItemI {
 const LIMIT_TASKS = 4;
 
 function CategoriesTypeListItem({ category }: CategoriesListItemI) {
-  const { updateTaskStatusCategory } = useAppStore();
+  const { updateTaskStatusCategory, saveCategoryTitle } = useAppStore();
   const { tasks, id } = category;
 
   const countLimitedTasks = useMemo(() => {
@@ -30,15 +30,19 @@ function CategoriesTypeListItem({ category }: CategoriesListItemI) {
     });
   };
 
+  const saveTitle = (title: string) => {
+    saveCategoryTitle({ categoryId: category.id, title });
+  };
+
   return (
     <div className={`noWrap ${s.block}`} style={{ backgroundColor: category.color }}>
       <Link to={category.id}>
         <div className={s.editBlock}>
-          <MdEdit className={s.editIcon} />
+          <MdOutlineReadMore className={s.editIcon} />
         </div>
       </Link>
 
-      <Title title={category.title} className={s.title} />
+      <Title title={category.title} className={s.title} isEditable saveTitle={saveTitle} />
 
       <div className={s.separator} />
 

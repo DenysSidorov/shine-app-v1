@@ -44,6 +44,26 @@ class MobXCategoriesStore {
     }
   };
 
+  saveCategoryTitle = async ({ categoryId, title }: { categoryId: string; title: string }): Promise<void> => {
+    try {
+      const data: CategoryType = await categoryService.fetchSaveCategoryTitle({ categoryId, title });
+
+      runInAction(() => {
+        const categories = this.categories.map((category: CategoryType) => {
+          if (category.id === data.id) {
+            return data;
+          }
+          return category;
+        });
+
+        this.categories = categories;
+      });
+    } catch (error) {
+      console.log(error);
+      this.setError("Failed to set category title");
+    }
+  };
+
   updateTaskStatusCategory = async ({ status, categoryId, idTask }: CategoryTaskStatusType) => {
     try {
       const data: CategoryType = await categoryService.updateCategoryTaskStatus({

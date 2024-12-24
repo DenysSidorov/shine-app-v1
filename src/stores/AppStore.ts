@@ -15,6 +15,7 @@ export abstract class AppStore {
   abstract getCurrentCategory(): CategoryType | undefined;
   abstract loadCategories(): Promise<void>;
   abstract updateTaskStatusCategory({ status, categoryId, idTask }: CategoryTaskStatusType): Promise<void>;
+  abstract saveCategoryTitle({ categoryId, title }: { categoryId: string; title: string }): Promise<CategoryType>;
 
   abstract removeTask({ categoryId, idTask }: DeleteTaskServiceType): Promise<boolean>;
   abstract loadCurrentCategory(id: string): Promise<void>;

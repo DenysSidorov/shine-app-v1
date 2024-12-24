@@ -14,6 +14,7 @@ class MobXRootStore implements AppStore {
   loadCategories = MobXCategoriesStore.loadCategories;
   updateTaskStatusCategory = MobXCategoriesStore.updateTaskStatusCategory;
   addNewCategory = MobXCategoriesStore.addNewCategory;
+  saveCategoryTitle = MobXCategoriesStore.saveCategoryTitle;
 
   getCurrentCategory = MobXCategoryStore.getCurrentCategory;
   loadCurrentCategory = MobXCategoryStore.loadCurrentCategory;

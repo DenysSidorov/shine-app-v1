@@ -20,15 +20,27 @@ export const updateCategoryTaskStatus = async ({
   categoryId,
   idTask,
 }: CategoryTaskStatusType): Promise<CategoryType> => {
-  const response = await axios.patch(`${API_URL}/categories/${categoryId}`, {
+  const response = await axios.patch(`${API_URL}/categories/${categoryId}/tasks/${idTask}`, {
     status,
-    idTask,
   });
   return response.data;
 };
 
 export const fetchAddNewCategory = async (): Promise<CategoryType> => {
   const response = await axios.post(`${API_URL}/categories`);
+  return response.data;
+};
+
+export const fetchSaveCategoryTitle = async ({
+  categoryId,
+  title,
+}: {
+  categoryId: string;
+  title: string;
+}): Promise<CategoryType> => {
+  const response = await axios.patch(`${API_URL}/categories/${categoryId}`, {
+    title,
+  });
   return response.data;
 };
 
