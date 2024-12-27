@@ -1,16 +1,19 @@
 import s from "./Title.module.scss";
 import classes from "classnames";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useAppStore } from "@/hooks/useAppStore.tsx";
 
 interface TitleBase {
   title: string;
   className?: string;
   isEditable?: boolean;
+  id?: null | string;
 }
 
 interface EditableTitle extends TitleBase {
   isEditable: true;
   saveTitle: (value: string) => void;
+  id: null | string;
 }
 
 interface NonEditableTitle extends TitleBase {
@@ -20,8 +23,17 @@ interface NonEditableTitle extends TitleBase {
 
 type TitleI = EditableTitle | NonEditableTitle;
 
-function Title({ title, className, isEditable = false, saveTitle }: TitleI) {
+function Title({ title, className, isEditable = false, saveTitle, id }: TitleI) {
+  const ref = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState<string>(title);
+  const { getNewCategoryId, removeNewCategoryId } = useAppStore();
+
+  useEffect(() => {
+    if (id === getNewCategoryId() && ref.current) {
+      ref.current.focus();
+      removeNewCategoryId();
+    }
+  }, [removeNewCategoryId, id, getNewCategoryId]);
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (isEditable) {
@@ -39,7 +51,13 @@ function Title({ title, className, isEditable = false, saveTitle }: TitleI) {
 
   if (isEditable) {
     return (
-      <input className={classes(s.title, className)} value={value} onChange={changeHandler} onBlur={leaveHandler} />
+      <input
+        className={classes(s.title, className)}
+        value={value}
+        onChange={changeHandler}
+        onBlur={leaveHandler}
+        ref={ref}
+      />
     );
   }
 

@@ -71,9 +71,8 @@ function AddNewTask({}: AddNewTaskI) {
     if (!isNewTaskRoute) {
       navigate(`/categories/${categoryId}/new-task`);
     } else {
-      if (status !== Statuses.IN_PROGRESS) {
+      if (status !== Statuses.IN_PROGRESS && getNewTitle().length > 0) {
         const response = await saveNewTask();
-        console.log("response", response);
         if (response === true) {
           navigate(`/categories/${categoryId}`);
         }

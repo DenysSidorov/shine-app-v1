@@ -12,7 +12,6 @@ interface CategoryTitleI {
   task?: TaskWithCategoryTitle;
 }
 
-//
 function CategoryTitle({ removeAction, isRemovingTaskWithTodos, task = {} as TaskWithCategoryTitle }: CategoryTitleI) {
   const handleRemoveAction = useCallback(() => {
     removeAction();

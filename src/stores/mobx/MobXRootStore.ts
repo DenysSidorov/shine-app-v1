@@ -15,6 +15,10 @@ class MobXRootStore implements AppStore {
   updateTaskStatusCategory = MobXCategoriesStore.updateTaskStatusCategory;
   addNewCategory = MobXCategoriesStore.addNewCategory;
   saveCategoryTitle = MobXCategoriesStore.saveCategoryTitle;
+  getNewCategoryId = MobXCategoriesStore.getNewCategoryId;
+  getIsLoadingCategories = MobXCategoriesStore.getIsLoadingCategories;
+  removeNewCategoryId = MobXCategoriesStore.removeNewCategoryId;
+  removeCategory = MobXCategoriesStore.removeCategory;
 
   getCurrentCategory = MobXCategoryStore.getCurrentCategory;
   loadCurrentCategory = MobXCategoryStore.loadCurrentCategory;
@@ -22,6 +26,7 @@ class MobXRootStore implements AppStore {
   setActionsTaskId = MobXCategoryStore.setActionsTaskId;
   getActionsTaskId = MobXCategoryStore.getActionsTaskId;
   removeTask = MobXCategoryStore.removeTask;
+  getIsLoadingCurrentCategory = MobXCategoryStore.getIsLoadingCurrentCategory;
 
   loadTaskTodos = MobXTodosStore.loadTaskTodos;
   getTaskTodos = MobXTodosStore.getTaskTodos;

@@ -31,6 +31,10 @@ export const fetchAddNewCategory = async (): Promise<CategoryType> => {
   return response.data;
 };
 
+export const fetchDeleteCategory = async (id: string): Promise<void> => {
+  await axios.delete(`${API_URL}/categories/${id}`);
+};
+
 export const fetchSaveCategoryTitle = async ({
   categoryId,
   title,

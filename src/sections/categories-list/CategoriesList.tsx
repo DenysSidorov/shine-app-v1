@@ -6,9 +6,12 @@ import { Fragment, useEffect } from "react";
 // import AddNewItem from "@/components/add-new-item";
 import { useAppStore } from "@/hooks/useAppStore.tsx";
 import { observer } from "mobx-react";
+import TitleSection from "@/sections/title-section";
+
+const title = "You don't have any categories yet.";
 
 function CategoriesList() {
-  const { getCategories, loadCategories } = useAppStore();
+  const { getCategories, loadCategories, getIsLoadingCategories } = useAppStore();
 
   useEffect(() => {
     (async () => {
@@ -16,10 +19,13 @@ function CategoriesList() {
     })();
   }, [loadCategories]);
 
+  const categories = getCategories();
+
   return (
     <Fragment>
+      {categories.length === 0 && <TitleSection title={title} inProgress={getIsLoadingCategories()} />}
       <div className={s.categories}>
-        {getCategories()?.map((category: CategoryType) => {
+        {categories?.map((category: CategoryType) => {
           if (category.type === "list") {
             return <CategoriesTypeListItem category={category as CategoryListType} key={category.id} />;
           }

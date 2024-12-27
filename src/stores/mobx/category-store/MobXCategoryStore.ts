@@ -7,12 +7,14 @@ class MobXCategoryStore {
   currentCategory: CategoryType | undefined = undefined;
   activeActionsId: string = "";
   error: string | null = null;
+  isLoading: boolean = false;
 
   constructor() {
     makeAutoObservable(this);
   }
 
   loadCurrentCategory = async (id: string): Promise<void> => {
+    this.isLoading = true;
     try {
       const data = await categoryService.fetchCategoryById(id);
       runInAction(() => {
@@ -21,7 +23,15 @@ class MobXCategoryStore {
     } catch (error) {
       console.log(error);
       this.setError("Failed to load todos");
+    } finally {
+      runInAction(() => {
+        this.isLoading = false;
+      });
     }
+  };
+
+  getIsLoadingCurrentCategory = (): boolean => {
+    return this.isLoading;
   };
 
   // getError(): string | null {

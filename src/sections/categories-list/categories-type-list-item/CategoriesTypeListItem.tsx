@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import s from "./CategoriesTypeListItem.module.scss";
 import { CategoryListType } from "@/types/category.ts";
 import { MdOutlineReadMore } from "react-icons/md";
+import { MdOutlineDelete } from "react-icons/md";
 import Title from "@/components/title";
 import Checkbox from "@/components/checkbox";
 import { useMemo } from "react";
@@ -12,10 +13,10 @@ interface CategoriesListItemI {
   category: CategoryListType;
 }
 
-const LIMIT_TASKS = 4;
+const LIMIT_TASKS = 3;
 
 function CategoriesTypeListItem({ category }: CategoriesListItemI) {
-  const { updateTaskStatusCategory, saveCategoryTitle } = useAppStore();
+  const { updateTaskStatusCategory, saveCategoryTitle, removeCategory } = useAppStore();
   const { tasks, id } = category;
 
   const countLimitedTasks = useMemo(() => {
@@ -38,11 +39,15 @@ function CategoriesTypeListItem({ category }: CategoriesListItemI) {
     <div className={`noWrap ${s.block}`} style={{ backgroundColor: category.color }}>
       <Link to={category.id}>
         <div className={s.editBlock}>
-          <MdOutlineReadMore className={s.editIcon} />
+          <MdOutlineReadMore />
         </div>
       </Link>
 
-      <Title title={category.title} className={s.title} isEditable saveTitle={saveTitle} />
+      <div className={s.removeBlock} onClick={() => removeCategory(category.id)}>
+        <MdOutlineDelete />
+      </div>
+
+      <Title title={category.title} className={s.title} isEditable saveTitle={saveTitle} id={category.id} />
 
       <div className={s.separator} />
 
@@ -50,9 +55,9 @@ function CategoriesTypeListItem({ category }: CategoriesListItemI) {
         <div className={s.task} key={task.id}>
           <Checkbox
             onChange={() => {
-              !task?.todos ? oneTaskClickHandler(task) : () => {};
+              !task.todos || task.todos.length === 0 ? oneTaskClickHandler(task) : () => {};
             }}
-            label={!task?.todos ? task.name : `${task.todos?.length}: ${task.name}`}
+            label={task?.todos?.length > 0 ? `${task.todos?.length}: ${task.name}` : task.name}
             name={task.id + task.name}
             completed={task.completed}
             labelClassName={s.labelClassName}

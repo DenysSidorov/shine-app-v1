@@ -6,10 +6,12 @@ import { useAppStore } from "@/hooks/useAppStore.tsx";
 import { observer } from "mobx-react";
 import { TaskType } from "@/types/task.ts";
 import Task from "@/sections/task";
+import TitleSection from "@/sections/title-section";
+import { CategoryType } from "@/types/category.ts";
 
 function Category() {
   const { categoryId } = useParams();
-  const { getCurrentCategory, loadCurrentCategory, setActionsTaskId } = useAppStore();
+  const { getCurrentCategory, loadCurrentCategory, setActionsTaskId, getIsLoadingCurrentCategory } = useAppStore();
 
   useEffect(() => {
     (async () => {
@@ -21,11 +23,13 @@ function Category() {
     return () => setActionsTaskId({ id: "" });
   }, [setActionsTaskId]);
 
-  const category = getCurrentCategory();
+  const category: CategoryType | undefined = getCurrentCategory();
   const tasks: TaskType[] = category?.tasks ?? [];
+  const title = `You don't have any tasks for "${category?.title}"`;
 
   return (
     <Fragment>
+      {tasks.length === 0 && <TitleSection title={title} inProgress={getIsLoadingCurrentCategory()} />}
       <div className={s.category}>
         {tasks.map((task: TaskType) => {
           return <Task key={task.id} task={task} categoryTitle={category?.title} color={category?.color} />;

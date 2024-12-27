@@ -15,7 +15,12 @@ export abstract class AppStore {
   abstract getCurrentCategory(): CategoryType | undefined;
   abstract loadCategories(): Promise<void>;
   abstract updateTaskStatusCategory({ status, categoryId, idTask }: CategoryTaskStatusType): Promise<void>;
-  abstract saveCategoryTitle({ categoryId, title }: { categoryId: string; title: string }): Promise<CategoryType>;
+  abstract saveCategoryTitle({ categoryId, title }: { categoryId: string; title: string }): Promise<void>;
+  abstract getIsLoadingCategories(): boolean;
+  abstract getNewCategoryId(): null | string;
+  abstract removeNewCategoryId(): void;
+  abstract removeCategory(id: string): Promise<void>;
+  abstract getIsLoadingCurrentCategory(): boolean;
 
   abstract removeTask({ categoryId, idTask }: DeleteTaskServiceType): Promise<boolean>;
   abstract loadCurrentCategory(id: string): Promise<void>;

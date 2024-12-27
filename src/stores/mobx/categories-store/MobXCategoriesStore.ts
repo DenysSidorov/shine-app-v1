@@ -5,6 +5,8 @@ import { CategoryTaskStatusType } from "@/services/types.ts";
 
 class MobXCategoriesStore {
   categories: CategoryType[] = [];
+  newCategoryId: null | string = null;
+  isLoading: boolean = false;
   error: string | null = null;
 
   constructor() {
@@ -12,6 +14,7 @@ class MobXCategoriesStore {
   }
 
   loadCategories = async (): Promise<void> => {
+    this.isLoading = true;
     try {
       const data = await categoryService.fetchCategories();
       runInAction(() => {
@@ -20,7 +23,19 @@ class MobXCategoriesStore {
     } catch (error) {
       console.log(error);
       this.setError("Failed to load todos");
+    } finally {
+      runInAction(() => {
+        this.isLoading = false;
+      });
     }
+  };
+
+  getIsLoadingCategories = (): boolean => {
+    return this.isLoading;
+  };
+
+  getNewCategoryId = (): null | string => {
+    return this.newCategoryId;
   };
 
   setError(error: string | null): void {
@@ -31,12 +46,29 @@ class MobXCategoriesStore {
     return this.categories;
   };
 
+  removeNewCategoryId = (): void => {
+    this.newCategoryId = null;
+  };
+
+  removeCategory = async (id: string): Promise<void> => {
+    try {
+      await categoryService.fetchDeleteCategory(id);
+      runInAction(() => {
+        this.categories = this.categories.filter((category: CategoryType) => category.id !== id);
+      });
+    } catch (error) {
+      console.log(error);
+      this.setError("Failed to delete category");
+    }
+  };
+
   addNewCategory = async (): Promise<void> => {
     try {
       const data: CategoryType = await categoryService.fetchAddNewCategory();
 
       runInAction(() => {
         this.categories.push(data);
+        this.newCategoryId = data.id;
       });
     } catch (error) {
       console.log(error);

@@ -7,8 +7,9 @@
   position: relative;
 }
 
-.editBlock {
+.editBlock, .removeBlock {
   position: absolute;
+  z-index: 1;
   border-radius: 50%;
   top: calc(100% - 40px);
   right: 12px;
@@ -35,6 +36,10 @@
       transform: scale(1.1) rotate(10deg);
     }
   }
+}
+
+.removeBlock {
+  left: 12px;
 }
 
 .title {
