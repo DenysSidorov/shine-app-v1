@@ -21,8 +21,8 @@ function TaskActions({ markTaskAndTodosAsCompleted, editTask, deleteTaskWithTodo
           <MdEdit />
         </div>
 
-        <div className={s.action}>
-          <MdDelete onClick={deleteTaskWithTodos} />
+        <div className={s.action} onClick={deleteTaskWithTodos}>
+          <MdDelete />
         </div>
       </div>
     </div>

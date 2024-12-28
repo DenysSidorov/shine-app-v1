@@ -27,12 +27,12 @@
     color: $colWhite;
     height: 30px;
     width: 30px;
-    transition: all ease 0.4s;
+    transition: all ease 0.3s;
   }
 
   &:hover {
     & > svg {
-      transform: scale(1.05);
+      transform: scale(1.2);
     }
   }
 }

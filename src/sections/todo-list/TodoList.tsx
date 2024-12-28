@@ -9,6 +9,7 @@ import { observer } from "mobx-react";
 import { TodoType } from "@/types/todo.ts";
 import { TaskType } from "@/types/task.ts";
 import { TaskWithCategoryTitle } from "@/sections/category-title/CategoryTitle.tsx";
+import TitleSection from "@/sections/title-section";
 
 const TodoList = observer(() => {
   const { categoryId = "", idTask = "" } = useParams();
@@ -21,6 +22,7 @@ const TodoList = observer(() => {
     updateTodoStatus,
     loadCurrentCategory,
     getCurrentCategory,
+    getIsLoadingCurrentCategory,
   } = useAppStore();
   const navigate = useNavigate();
   const [isRemovingTaskWithTodos, setIsRemovingTaskWithTodos] = useState<boolean>(false);
@@ -75,9 +77,12 @@ const TodoList = observer(() => {
     return {} as TaskWithCategoryTitle;
   }, [category, idTask]);
 
+  const title = `You don't have any todos for this task`;
+
   return (
     <div className={s.wrapper}>
       <CategoryTitle removeAction={removeTaskWithTodos} isRemovingTaskWithTodos={isRemovingTaskWithTodos} task={task} />
+      {todos?.length === 0 && <TitleSection title={title} inProgress={getIsLoadingCurrentCategory()} />}
       {todos?.map((todo: TodoType) => {
         return <TodoItem key={todo.id} todo={todo} removeTodo={removeTodo} changeStatus={changeStatus} />;
       })}
