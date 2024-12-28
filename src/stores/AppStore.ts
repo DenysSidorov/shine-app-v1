@@ -49,11 +49,3 @@ export abstract class AppStore {
 
   abstract addNewCategory(): Promise<void>;
 }
-
-export interface Todo {
-  id: string;
-  name: string;
-  date: Date;
-  completed: boolean;
-  description: string;
-}
