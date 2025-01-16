@@ -66,7 +66,6 @@ class MobXCategoryStore {
   removeTask = async ({ categoryId, idTask }: DeleteTaskServiceType): Promise<boolean> => {
     try {
       const data = await categoryService.fetchDeleteTask(categoryId, idTask);
-      console.log("==> data", data);
       runInAction(() => {
         this.loadCurrentCategory(categoryId);
       });

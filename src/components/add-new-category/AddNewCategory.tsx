@@ -13,11 +13,9 @@ function AddNewCategory() {
     if (!isLoad) {
       setIsLoad(true);
       try {
-        const response = await addNewCategory();
-        console.log("response:", response);
-        // update list of categories
+        await addNewCategory();
       } catch (error) {
-        console.log("error:", error); // show notification about error
+        console.log("error:", error);
       } finally {
         setIsLoad(false);
       }

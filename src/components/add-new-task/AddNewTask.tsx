@@ -17,7 +17,7 @@ enum Statuses {
   NOT_READY = "NOT_READY",
 }
 
-function AddNewTask({}: AddNewTaskI) {
+const AddNewTask = observer(({}: AddNewTaskI) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const { categoryId } = useParams();
@@ -85,6 +85,6 @@ function AddNewTask({}: AddNewTaskI) {
       {icon}
     </div>
   );
-}
+});
 
-export default observer(AddNewTask);
+export default AddNewTask;

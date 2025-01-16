@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { CategoryType } from "@/types/category.ts";
 
-export function useGetCategories() {
+export function useGetCategory() {
   const { categoryId } = useParams();
   const { getCurrentCategory, loadCurrentCategory, getIsLoadingCurrentCategory } = useAppStore();
 

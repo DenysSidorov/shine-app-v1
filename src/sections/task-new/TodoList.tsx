@@ -41,7 +41,7 @@ const TaskNew = observer(() => {
               key={todo.id}
               todo={todo}
               removeTodo={removeTodoForNewTask}
-              changeStatus={changeStatusTodoForNewTask}
+              changeStatusProp={changeStatusTodoForNewTask}
             />
           );
         })}

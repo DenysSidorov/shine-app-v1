@@ -1,41 +1,18 @@
-import { useNavigate, useParams } from "react-router-dom";
-import s from "./TodoList.module.scss";
+import { useParams } from "react-router-dom";
 import TodoItem from "@/sections/todo-item";
-import CategoryTitle from "@/sections/category-title";
 import NewTodo from "@/components/new-todo";
 import { useAppStore } from "@/hooks/useAppStore.tsx";
-import { useEffect, useMemo, useState } from "react";
+import { Fragment } from "react";
 import { observer } from "mobx-react";
 import { TodoType } from "@/types/todo.ts";
-import { TaskType } from "@/types/task.ts";
-import { TaskWithCategoryTitle } from "@/sections/category-title/CategoryTitle.tsx";
-import TitleSection from "@/sections/title-section";
 
-const TodoList = observer(() => {
+interface TodoListI {
+  todos: TodoType[];
+}
+
+const TodoList = observer(({ todos }: TodoListI) => {
   const { categoryId = "", idTask = "" } = useParams();
-  const {
-    getTaskTodos,
-    loadTaskTodos,
-    addNewTodo,
-    deleteTodo,
-    removeTask,
-    updateTodoStatus,
-    loadCurrentCategory,
-    getCurrentCategory,
-    getIsLoadingCurrentCategory,
-  } = useAppStore();
-  const navigate = useNavigate();
-  const [isRemovingTaskWithTodos, setIsRemovingTaskWithTodos] = useState<boolean>(false);
-
-  useEffect(() => {
-    loadCurrentCategory(categoryId);
-  }, [loadCurrentCategory, categoryId]);
-
-  useEffect(() => {
-    (async () => {
-      await loadTaskTodos({ categoryId: categoryId ?? "", idTask: idTask ?? "" });
-    })();
-  }, [categoryId, idTask, loadTaskTodos]);
+  const { loadTaskTodos, addNewTodo, deleteTodo } = useAppStore();
 
   const removeTodo = async (idTodo: string) => {
     const result = await deleteTodo({ categoryId: categoryId ?? "", idTodo, idTask: idTask ?? "" });
@@ -51,43 +28,13 @@ const TodoList = observer(() => {
     }
   };
 
-  const removeTaskWithTodos = async () => {
-    if (!isRemovingTaskWithTodos) {
-      setIsRemovingTaskWithTodos(true);
-      await removeTask({ categoryId, idTask });
-      navigate(`/categories/${categoryId}`);
-    }
-  };
-
-  const changeStatus = async (id: string, completed: boolean) => {
-    const response = await updateTodoStatus({ status: !completed, idTodo: id, categoryId, idTask });
-    if (response) {
-      await loadTaskTodos({ categoryId: categoryId ?? "", idTask: idTask ?? "" });
-    }
-  };
-
-  const todos = getTaskTodos();
-  const category = getCurrentCategory();
-
-  const task: TaskWithCategoryTitle = useMemo(() => {
-    if (category) {
-      const currentTask = category?.tasks?.find((task: TaskType) => String(task.id) === String(idTask));
-      return { ...currentTask, categoryTitle: category.title, color: category.color };
-    }
-    return {} as TaskWithCategoryTitle;
-  }, [category, idTask]);
-
-  const title = `You don't have any todos for this task`;
-
   return (
-    <div className={s.wrapper}>
-      <CategoryTitle removeAction={removeTaskWithTodos} isRemovingTaskWithTodos={isRemovingTaskWithTodos} task={task} />
-      {todos?.length === 0 && <TitleSection title={title} inProgress={getIsLoadingCurrentCategory()} />}
+    <Fragment>
       {todos?.map((todo: TodoType) => {
-        return <TodoItem key={todo.id} todo={todo} removeTodo={removeTodo} changeStatus={changeStatus} />;
+        return <TodoItem key={todo.id} todo={todo} removeTodo={removeTodo} />;
       })}
       <NewTodo addNew={addNew} />
-    </div>
+    </Fragment>
   );
 });
 

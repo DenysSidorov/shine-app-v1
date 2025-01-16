@@ -1,22 +1,11 @@
 import s from "./CategoryTitle.module.scss";
-import { MdDelete } from "react-icons/md";
-import { VscLoading } from "react-icons/vsc";
-import { useCallback } from "react";
 import { TaskType } from "@/types/task.ts";
+import RemoveTodo from "@/components/remove-todo";
+import { useTask } from "@/sections/category-title/useTask.tsx";
 
 export type TaskWithCategoryTitle = Partial<TaskType & { categoryTitle: string; color: string }>;
-
-interface CategoryTitleI {
-  isRemovingTaskWithTodos?: boolean;
-  removeAction: () => void;
-  task?: TaskWithCategoryTitle;
-}
-
-function CategoryTitle({ removeAction, isRemovingTaskWithTodos, task = {} as TaskWithCategoryTitle }: CategoryTitleI) {
-  const handleRemoveAction = useCallback(() => {
-    removeAction();
-  }, [removeAction]);
-
+function CategoryTitle() {
+  const { task } = useTask();
   const titleColor = task?.color || "#000";
 
   return (
@@ -29,15 +18,7 @@ function CategoryTitle({ removeAction, isRemovingTaskWithTodos, task = {} as Tas
         <div className={s.date}>{String(task?.date)}</div>
       </div>
 
-      <div className={s.action}>
-        {!isRemovingTaskWithTodos ? (
-          <MdDelete onClick={handleRemoveAction} />
-        ) : (
-          <div className={s.preloader}>
-            <VscLoading />
-          </div>
-        )}
-      </div>
+      <RemoveTodo />
     </div>
   );
 }

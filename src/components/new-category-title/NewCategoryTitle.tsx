@@ -1,11 +1,10 @@
 import s from "./NewCategoryTitle.module.scss";
 import { useAppStore } from "@/hooks/useAppStore.tsx";
-// import { useState } from "react";
 import { observer } from "mobx-react";
 
 interface NewCategoryTitleI {}
 
-function NewCategoryTitle({}: NewCategoryTitleI) {
+const NewCategoryTitle = observer(({}: NewCategoryTitleI) => {
   const { setNewTitle, getNewTitle } = useAppStore();
   return (
     <div className={s.wrapper}>
@@ -20,6 +19,6 @@ function NewCategoryTitle({}: NewCategoryTitleI) {
       </div>
     </div>
   );
-}
+});
 
-export default observer(NewCategoryTitle);
+export default NewCategoryTitle;
