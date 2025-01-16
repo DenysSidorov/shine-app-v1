@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import s from "./CategoriesTypeCountItem.module.scss";
+import s from "./CategoriesItemCount.module.scss";
 import { CategoryCountType } from "@/types/category.ts";
 import { FaGlassWater } from "react-icons/fa6";
 import Title from "@/components/title";
@@ -9,7 +9,7 @@ interface CategoriesListItemI {
   category: CategoryCountType;
 }
 
-function CategoriesTypeCountItem({ category }: CategoriesListItemI) {
+function CategoriesItemCount({ category }: CategoriesListItemI) {
   return (
     <Link to={category.id}>
       <div className={`noWrap ${s.block}`} style={{ backgroundColor: category.color }}>
@@ -31,4 +31,4 @@ function CategoriesTypeCountItem({ category }: CategoriesListItemI) {
   );
 }
 
-export default CategoriesTypeCountItem;
+export default CategoriesItemCount;

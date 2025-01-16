@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import s from "./CategoriesTypeListItem.module.scss";
+import s from "./CategoriesItemList.module.scss";
 import { CategoryListType } from "@/types/category.ts";
 import { MdOutlineReadMore } from "react-icons/md";
 import { MdOutlineDelete } from "react-icons/md";
@@ -15,7 +15,7 @@ interface CategoriesListItemI {
 
 const LIMIT_TASKS = 3;
 
-function CategoriesTypeListItem({ category }: CategoriesListItemI) {
+function CategoriesItemList({ category }: CategoriesListItemI) {
   const { updateTaskStatusCategory, saveCategoryTitle, removeCategory } = useAppStore();
   const { tasks, id } = category;
 
@@ -78,4 +78,4 @@ function CategoriesTypeListItem({ category }: CategoriesListItemI) {
   );
 }
 
-export default CategoriesTypeListItem;
+export default CategoriesItemList;

@@ -1,9 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RedirectPage from "@/pages/redirects/RedirectPage.tsx";
 import PageLayout from "@/layouts/page-layout/PageLayout.tsx";
-import Categories from "@/pages/categories/Categories.tsx";
+import CategoriesPage from "@/pages/categories-page/CategoriesPage.tsx";
 import ErrorPage from "@/pages/Error.tsx";
-import Category from "@/pages/category/Category.tsx";
+import Category from "@/pages/category-page/CategoryPage.tsx";
 import Todos from "@/pages/todos/Todos.tsx";
 import TaskNew from "@/sections/task-new";
 
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/categories",
-        element: <Categories />,
+        element: <CategoriesPage />,
       },
       {
         path: "categories/:categoryId",

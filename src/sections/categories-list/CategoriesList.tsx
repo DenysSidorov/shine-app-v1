@@ -1,40 +1,27 @@
 import s from "./CategoriesList.module.scss";
-import CategoriesTypeListItem from "@/sections/categories-list/categories-type-list-item";
-import CategoriesTypeCountItem from "@/sections/categories-list/categories-type-count-item";
 import { CategoryCountType, CategoryListType, CategoryType } from "@/types/category.ts";
-import { Fragment, useEffect } from "react";
-// import AddNewItem from "@/components/add-new-item";
-import { useAppStore } from "@/hooks/useAppStore.tsx";
+import { Fragment } from "react";
 import { observer } from "mobx-react";
-import TitleSection from "@/sections/title-section";
+import CategoriesItemCount from "@/sections/categories-list/categories-item-count";
+import CategoriesItemList from "@/sections/categories-list/categories-item-list";
 
-const title = "You don't have any categories yet.";
+interface CategoriesListProps {
+  categories: CategoryType[];
+}
 
-function CategoriesList() {
-  const { getCategories, loadCategories, getIsLoadingCategories } = useAppStore();
-
-  useEffect(() => {
-    (async () => {
-      await loadCategories();
-    })();
-  }, [loadCategories]);
-
-  const categories = getCategories();
-
+function CategoriesList({ categories }: CategoriesListProps) {
   return (
     <Fragment>
-      {categories.length === 0 && <TitleSection title={title} inProgress={getIsLoadingCategories()} />}
       <div className={s.categories}>
-        {categories?.map((category: CategoryType) => {
+        {categories.map((category: CategoryType) => {
           if (category.type === "list") {
-            return <CategoriesTypeListItem category={category as CategoryListType} key={category.id} />;
+            return <CategoriesItemList category={category as CategoryListType} key={category.id} />;
           }
           if (category.type === "count") {
-            return <CategoriesTypeCountItem category={category as CategoryCountType} key={category.id} />;
+            return <CategoriesItemCount category={category as CategoryCountType} key={category.id} />;
           }
         })}
       </div>
-      {/*<AddNewItem />*/}
     </Fragment>
   );
 }

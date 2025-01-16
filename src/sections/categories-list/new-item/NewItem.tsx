@@ -5,7 +5,7 @@ import { observer } from "mobx-react";
 
 function NewItem() {
   const { pathname } = useLocation();
-  console.log(pathname);
+  // console.log(pathname);
 
   const isCategoriesRoute = pathname === "/categories";
 
