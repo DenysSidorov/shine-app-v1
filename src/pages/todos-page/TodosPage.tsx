@@ -15,8 +15,10 @@ const TodosPage = observer(() => {
     <div className={s.tasks}>
       <div className={s.wrapper}>
         <CategoryTitle />
-        {todos?.length === 0 && <TitleSection title={title} inProgress={isLoadingCurrentCategory} />}
-        <TodoList todos={todos || []} />
+        {(todos?.length === 0 || isLoadingCurrentCategory) && (
+          <TitleSection title={title} inProgress={isLoadingCurrentCategory} />
+        )}
+        {!isLoadingCurrentCategory && <TodoList todos={todos || []} />}
       </div>
     </div>
   );

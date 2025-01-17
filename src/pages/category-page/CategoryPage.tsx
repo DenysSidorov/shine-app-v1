@@ -15,8 +15,10 @@ function CategoryPage() {
 
   return (
     <Fragment>
-      {tasks.length === 0 && <TitleSection title={title} inProgress={isLoadingCurrentCategory} />}
-      <TaskList tasks={tasks} color={currentCategory?.color} title={title} />
+      {(tasks.length === 0 || isLoadingCurrentCategory) && (
+        <TitleSection title={title} inProgress={isLoadingCurrentCategory} />
+      )}
+      {!isLoadingCurrentCategory && <TaskList tasks={tasks} color={currentCategory?.color} title={title} />}
     </Fragment>
   );
 }
