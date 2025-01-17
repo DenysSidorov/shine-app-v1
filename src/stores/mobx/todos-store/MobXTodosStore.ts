@@ -74,30 +74,6 @@ class MobXTodosStore {
       return false;
     }
   };
-
-  // updateTaskStatusCategory = async ({ status, categoryId, idTask }: CategoryTaskStatusType) => {
-  //   try {
-  //     const data: CategoryType = await categoryService.updateCategoryTaskStatus({
-  //       status,
-  //       categoryId,
-  //       idTask,
-  //     });
-  //
-  //     runInAction(() => {
-  //       const categories = this.categories.map((category: CategoryType) => {
-  //         if (category.id === data.id) {
-  //           return data;
-  //         }
-  //         return category;
-  //       });
-  //
-  //       this.categories = categories;
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //     this.setError("Failed to set task status");
-  //   }
-  // };
 }
 
 export default new MobXTodosStore();

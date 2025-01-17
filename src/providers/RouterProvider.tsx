@@ -1,11 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import RedirectPage from "@/pages/redirects/RedirectPage.tsx";
 import PageLayout from "@/layouts/page-layout/PageLayout.tsx";
-import CategoriesPage from "@/pages/categories-page/CategoriesPage.tsx";
+import RedirectPage from "@/pages/redirects/RedirectPage.tsx";
 import ErrorPage from "@/pages/Error.tsx";
-import Category from "@/pages/category-page/CategoryPage.tsx";
+import CategoriesPage from "@/pages/categories-page/CategoriesPage.tsx";
+import CategoryPage from "@/pages/category-page/CategoryPage.tsx";
 import TodosPage from "@/pages/todos-page/TodosPage.tsx";
-import TaskNew from "@/sections/task-new";
+import NewTaskPage from "@/pages/new-task-page";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: "categories/:categoryId",
-        element: <Category />,
+        element: <CategoryPage />,
       },
       {
         path: "/categories/:categoryId/todos/:idTask",
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/categories/:categoryId/new-task",
-        element: <TaskNew />,
+        element: <NewTaskPage />,
       },
     ],
   },

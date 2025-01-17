@@ -5,7 +5,7 @@ function Navigator({ pathname }: { pathname: string }) {
   const navigate = useNavigate();
   let url = "/categories";
 
-  if (pathname.includes("todos")) {
+  if (pathname.includes("new-task")) {
     url = `/categories/${getPathValues(pathname)[1]}`;
   }
 

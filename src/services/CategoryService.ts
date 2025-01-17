@@ -52,22 +52,3 @@ export const fetchDeleteTask = async (categoryId: string, idTask: string): Promi
   const response = await axios.delete(`${API_URL}/categories/${categoryId}/tasks/${idTask}`);
   return response.data;
 };
-
-// export const addTodo = async (todo: Todo): Promise<Todo> => {
-//   const response = await axios.post(API_URL, todo);
-//   return response.data;
-// };
-//
-// export const updateTodo = async (id: string, updatedTodo: Partial<Todo>): Promise<Todo> => {
-//   const response = await axios.put(`${API_URL}/${id}`, updatedTodo);
-//   return response.data;
-// };
-//
-// export const deleteTodo = async (id: string): Promise<void> => {
-//   await axios.delete(`${API_URL}/${id}`);
-// };
-//
-// export const toggleTodoCompletion = async (id: string): Promise<Todo> => {
-//   const response = await axios.patch(`${API_URL}/${id}/toggle`);
-//   return response.data;
-// };

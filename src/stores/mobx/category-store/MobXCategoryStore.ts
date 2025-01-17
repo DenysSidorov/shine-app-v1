@@ -34,10 +34,6 @@ class MobXCategoryStore {
     return this.isLoading;
   };
 
-  // getError(): string | null {
-  //   return this.error;
-  // }
-
   setError(error: string | null): void {
     this.error = error;
   }

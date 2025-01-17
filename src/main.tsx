@@ -7,7 +7,6 @@ import { StoreProvider } from "@/providers/StoreProvider.tsx";
 import { createStore } from "@/stores/createStore.ts";
 
 const storeType = process.env.FRONT_STORE_TYPE || "mobx";
-// console.log("storeType: ", storeType);
 const store = createStore(storeType);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

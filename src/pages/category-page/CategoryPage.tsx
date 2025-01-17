@@ -8,7 +8,6 @@ import { useRemoveTaskId } from "@/pages/category-page/hooks.tsx";
 
 function CategoryPage() {
   const { currentCategory, isLoadingCurrentCategory } = useGetCategory();
-
   useRemoveTaskId();
 
   const tasks: TaskType[] = currentCategory?.tasks ?? [];

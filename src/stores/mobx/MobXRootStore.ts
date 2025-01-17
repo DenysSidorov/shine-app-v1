@@ -10,6 +10,7 @@ class MobXRootStore implements AppStore {
     makeAutoObservable(this);
   }
 
+  // categories
   getCategories = MobXCategoriesStore.getCategories;
   loadCategories = MobXCategoriesStore.loadCategories;
   updateTaskStatusCategory = MobXCategoriesStore.updateTaskStatusCategory;
@@ -20,6 +21,7 @@ class MobXRootStore implements AppStore {
   removeNewCategoryId = MobXCategoriesStore.removeNewCategoryId;
   removeCategory = MobXCategoriesStore.removeCategory;
 
+  // category
   getCurrentCategory = MobXCategoryStore.getCurrentCategory;
   loadCurrentCategory = MobXCategoryStore.loadCurrentCategory;
   updateTaskStatusInCurrentCategory = MobXCategoryStore.updateTaskStatusInCurrentCategory;
@@ -28,12 +30,14 @@ class MobXRootStore implements AppStore {
   removeTask = MobXCategoryStore.removeTask;
   getIsLoadingCurrentCategory = MobXCategoryStore.getIsLoadingCurrentCategory;
 
+  // todos
   loadTaskTodos = MobXTodosStore.loadTaskTodos;
   getTaskTodos = MobXTodosStore.getTaskTodos;
   addNewTodo = MobXTodosStore.addNewTodo;
   deleteTodo = MobXTodosStore.deleteTodo;
   updateTodoStatus = MobXTodosStore.updateTodoStatus;
 
+  // tasks
   addNewTodoForNewTask = MobXTasksStore.addNewTodoForNewTask;
   removeTodoForNewTask = MobXTasksStore.removeTodoForNewTask;
   changeStatusTodoForNewTask = MobXTasksStore.changeStatusTodoForNewTask;
@@ -46,23 +50,6 @@ class MobXRootStore implements AppStore {
   setIsLoadingNewTaskStatus = MobXTasksStore.setIsLoadingNewTaskStatus;
   getIsLoadingNewTaskStatus = MobXTasksStore.getIsLoadingNewTaskStatus;
   getCategoryIdOfNewTask = MobXTasksStore.getCategoryIdOfNewTask;
-
-  /*
-  ({categoryId, idTask}: TaskTodosServiceType): Promise<void> {
-    return Promise.resolve(undefined);
-  }
-  *
-  * */
-
-  // addTodo(todo: Todo): void {
-  //   console.log(todo);
-  //   // this.todos.push(todo);
-  // }
-  //
-  // removeTodo(id: string): void {
-  //   console.log(id);
-  //   // this.todos = this.todos.filter((todo) => todo.id !== id);
-  // }
 }
 
 export default MobXRootStore;

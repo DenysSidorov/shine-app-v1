@@ -39,6 +39,7 @@ const AddNewTask = observer(({}: AddNewTaskI) => {
     }
     return "ADD_NEW";
   };
+
   const status = getStatus();
 
   const icon = useMemo(() => {
