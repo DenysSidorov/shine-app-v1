@@ -8,6 +8,10 @@ function NewItem() {
 
   const isCategoriesRoute = pathname === "/categories";
 
+  if (pathname.includes("/todos")) {
+    return null;
+  }
+
   if (isCategoriesRoute) {
     return <AddNewCategory />;
   }

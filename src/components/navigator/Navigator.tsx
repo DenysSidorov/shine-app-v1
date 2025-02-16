@@ -9,7 +9,7 @@ function Navigator({ pathname }: { pathname: string }) {
     url = `/categories/${getPathValues(pathname)[1]}`;
   }
 
-  return <IoChevronBackCircle size={"32px"} onClick={() => navigate(url)} />;
+  return <IoChevronBackCircle size={"32px"} onClick={() => navigate(url)} data-testid="back-button" />;
 }
 
 export default Navigator;
