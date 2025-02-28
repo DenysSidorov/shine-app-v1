@@ -45,13 +45,13 @@ const AddNewTask = observer(({}: AddNewTaskI) => {
   const icon = useMemo(() => {
     switch (status) {
       case Statuses.IN_PROGRESS:
-        return <AiOutlineLoading3Quarters />;
+        return <AiOutlineLoading3Quarters data-testid="in-progress" />;
       case Statuses.READY_FOR_SAVE:
-        return <FaCheck />;
+        return <FaCheck data-testid="ready-for-save" />;
       case Statuses.NOT_READY:
-        return <CiNoWaitingSign />;
+        return <CiNoWaitingSign data-testid="not-ready" />;
       default:
-        return <IoAddSharp />;
+        return <IoAddSharp data-testid="add-news" />;
     }
   }, [status]);
 
@@ -74,7 +74,7 @@ const AddNewTask = observer(({}: AddNewTaskI) => {
     } else {
       if (status !== Statuses.IN_PROGRESS && getNewTitle().length > 0) {
         const response = await saveNewTask();
-        if (response === true) {
+        if (response) {
           navigate(`/categories/${categoryId}`);
         }
       }
@@ -82,7 +82,7 @@ const AddNewTask = observer(({}: AddNewTaskI) => {
   };
 
   return (
-    <div onClick={userHandler} className={`${s.wrapper} ${background}`}>
+    <div onClick={userHandler} className={`${s.wrapper} ${background}`} data-testid="wrapper">
       {icon}
     </div>
   );
