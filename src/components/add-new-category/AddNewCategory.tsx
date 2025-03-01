@@ -23,8 +23,8 @@ function AddNewCategory() {
   };
 
   return (
-    <div onClick={userHandler} className={`${s.wrapper} ${isLoad ? s.inProgress : s.addNew}`}>
-      {isLoad ? <AiOutlineLoading3Quarters /> : <IoAddSharp />}
+    <div onClick={userHandler} className={`${s.wrapper} ${isLoad ? s.inProgress : s.addNew}`} data-testid="wrapper">
+      {isLoad ? <AiOutlineLoading3Quarters data-testid="loading-icon" /> : <IoAddSharp data-testid="add-icon" />}
     </div>
   );
 }
