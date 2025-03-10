@@ -27,8 +27,21 @@ function NewTodo({ addNew }: AddNewItemI) {
     if (text) {
       addNew(text);
       inputRef.current.value = "";
+      inputRef.current.focus();
     }
-    changeModeHandler();
+    // changeModeHandler();
+  };
+
+  const onKeyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      addNewTodo();
+    }
+  };
+
+  const onBlurHandler = () => {
+    setTimeout(() => {
+      changeModeHandler();
+    }, 50);
   };
 
   return (
@@ -39,7 +52,14 @@ function NewTodo({ addNew }: AddNewItemI) {
             <div className={s.icon}>
               <GoCheckCircleFill className={s.checkIcon} onClick={() => addNewTodo()} role="button" />
             </div>
-            <input type="text" placeholder="New todo..." className={s.input} ref={inputRef} />
+            <input
+              type="text"
+              placeholder="New todo..."
+              className={s.input}
+              ref={inputRef}
+              onKeyDown={onKeyDownHandler}
+              onBlur={onBlurHandler}
+            />
           </div>
         ) : (
           <div className={s.addMore} onClick={changeModeHandler}>
