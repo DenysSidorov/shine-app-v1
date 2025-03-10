@@ -24,10 +24,10 @@ function RemoveTodo() {
 
   return (
     <div className={s.action}>
-      {!isRemovingTaskWithTodos && <MdDelete onClick={handleRemoveAction} />}
+      {!isRemovingTaskWithTodos && <MdDelete onClick={handleRemoveAction} role="button" />}
       {isRemovingTaskWithTodos && (
         <div className={s.preloader}>
-          <VscLoading />
+          <VscLoading role="status" />
         </div>
       )}
     </div>

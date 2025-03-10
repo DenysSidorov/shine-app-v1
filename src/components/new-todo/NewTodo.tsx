@@ -37,7 +37,7 @@ function NewTodo({ addNew }: AddNewItemI) {
         {isInputMode ? (
           <div className={s.inputContainer}>
             <div className={s.icon}>
-              <GoCheckCircleFill className={s.checkIcon} onClick={() => addNewTodo()} />
+              <GoCheckCircleFill className={s.checkIcon} onClick={() => addNewTodo()} role="button" />
             </div>
             <input type="text" placeholder="New todo..." className={s.input} ref={inputRef} />
           </div>
