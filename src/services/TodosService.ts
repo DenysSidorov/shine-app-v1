@@ -3,7 +3,7 @@ import { TodoType } from "@/types/todo.ts";
 import { UpdateTodoStatusType } from "@/services/types.ts";
 
 const { SERVER_DOMAIN, SERVER_PORT } = process.env;
-const API_URL = ` ${SERVER_DOMAIN}:${SERVER_PORT}/api`;
+const API_URL = ` ${SERVER_DOMAIN}${SERVER_PORT ? ":" + SERVER_PORT : ""}/api`;
 
 export const fetchTodos = async (categoryId: string, idTask: string): Promise<TodoType[]> => {
   const response = await axios.get(`${API_URL}/categories/${categoryId}/tasks/${idTask}/todos`);
