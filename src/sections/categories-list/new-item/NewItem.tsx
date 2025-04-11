@@ -1,9 +1,10 @@
 import { useLocation } from "react-router-dom";
+import { FC } from "react";
 import AddNewTask from "@/components/add-new-task";
 import AddNewCategory from "@/components/add-new-category";
 import { observer } from "mobx-react";
 
-function NewItem() {
+const NewItem: FC = () => {
   const { pathname } = useLocation();
 
   const isCategoriesRoute = pathname === "/categories";
@@ -21,6 +22,6 @@ function NewItem() {
   }
 
   return null;
-}
+};
 
 export default observer(NewItem);
