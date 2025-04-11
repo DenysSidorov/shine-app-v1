@@ -3,7 +3,7 @@ import { CategoryType } from "@/types/category.ts";
 import { CategoryTaskStatusType } from "@/services/types.ts";
 
 const { SERVER_DOMAIN, SERVER_PORT } = process.env;
-const API_URL = ` ${SERVER_DOMAIN}:${SERVER_PORT}/api`;
+const API_URL = `${SERVER_DOMAIN}${SERVER_PORT ? ":" + SERVER_PORT : ""}/api`;
 
 export const fetchCategories = async (): Promise<CategoryType[]> => {
   const response = await axios.get(`${API_URL}/categories`);
