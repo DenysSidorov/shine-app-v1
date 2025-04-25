@@ -16,20 +16,14 @@ COPY . .
 # Build the application
 RUN npm run build
 
-# Stage 2: Production
-FROM node:22.14.0-alpine
+# Stage 2: Serve with Nginx
+FROM nginx:1.25.2-alpine
 
-# Set the working directory
-WORKDIR /output
-
-# Copy build output from the builder stage
-COPY --from=builder /app/dist ./
+# Copy build output to Nginx's default static directory
+COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Expose port 80
-#EXPOSE 80
+EXPOSE 80
 
 # Start Nginx server
-#CMD ["nginx", "-g", "daemon off;"]
-
-# Default command to indicate build completion
-CMD ["echo", "Build complete. Copy files from /output."]
+CMD ["nginx", "-g", "daemon off;"]
