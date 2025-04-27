@@ -16,20 +16,18 @@ COPY . .
 # Build the application
 RUN npm run build
 
-# Stage 2: Serve with "serve"
-FROM node:22.14.0-alpine
+# Stage 2: Serve with Nginx
+FROM nginx:1.25.2-alpine
 
-# Install "serve" globally
-RUN npm install -g serve
+# Copy the build output to Nginx's HTML directory
+COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Set the working directory
-WORKDIR /app
-
-# Copy build output
-COPY --from=builder /app/dist ./dist
+# Copy custom Nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 80
 EXPOSE 80
 
-# Start the server
-CMD ["serve", "-s", "dist", "-l", "80", "--single"]
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
+
