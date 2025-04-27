@@ -32,4 +32,4 @@ COPY --from=builder /app/dist ./dist
 EXPOSE 80
 
 # Start the server
-CMD ["serve", "-s", "dist", "-l", "80"]
+CMD ["serve", "-s", "dist", "-l", "80", "--single"]
