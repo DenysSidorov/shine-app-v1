@@ -22,5 +22,7 @@ add seo optimisation
 add online code checker
 add login system (sentry etc)
 add users' behaviour checker on page
+add errors
+update react-router-dom from v6
 
 

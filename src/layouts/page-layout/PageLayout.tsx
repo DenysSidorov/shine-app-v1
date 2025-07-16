@@ -3,7 +3,7 @@ import Header from "@/sections/header";
 import s from "./PageLayout.module.scss";
 import NewItem from "@/sections/categories-list/new-item";
 
-function PageLayout() {
+function PageLayout({ children, isForErrorPage }: { children?: React.ReactNode; isForErrorPage?: boolean }) {
   return (
     <div className={s.wrapper}>
       <div className={s.header}>
@@ -11,7 +11,8 @@ function PageLayout() {
       </div>
       <div className={s.content}>
         <Outlet />
-        <NewItem />
+        {children}
+        {!isForErrorPage && <NewItem />}
       </div>
     </div>
   );

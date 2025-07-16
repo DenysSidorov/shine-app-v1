@@ -11,7 +11,11 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <RedirectPage page="/categories" />,
-    errorElement: <ErrorPage />,
+    errorElement: (
+      <PageLayout isForErrorPage>
+        <ErrorPage />
+      </PageLayout>
+    ),
   },
   {
     path: "/login",
