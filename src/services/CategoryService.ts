@@ -3,7 +3,10 @@ import { CategoryType } from "@/types/category.ts";
 import { CategoryTaskStatusType } from "@/services/types.ts";
 
 const { SERVER_DOMAIN, SERVER_PORT } = process.env;
-const API_URL = ` ${SERVER_DOMAIN}${SERVER_PORT ? ":" + SERVER_PORT : ""}/api`;
+console.log("SERVER_DOMAIN", SERVER_DOMAIN);
+console.log("SERVER_PORT", SERVER_PORT);
+const s_port = SERVER_PORT !== undefined && SERVER_PORT !== "undefined" ? SERVER_PORT : "";
+const API_URL = `${SERVER_DOMAIN}${s_port ? ":" + s_port : ""}/api`;
 // const API_URL = ` ${SERVER_DOMAIN}:${SERVER_PORT}/api`;
 
 export const fetchCategories = async (): Promise<CategoryType[]> => {
