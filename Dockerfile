@@ -1,40 +1,26 @@
-# Stage 1: Build the application
-FROM node:22.14.0-alpine AS builder
-
-# Set working directory
+# Этап сборки (build stage)
+FROM node:20-alpine AS builder
 WORKDIR /app
 
-# Copy package.json and package-lock.json
-COPY package*.json ./
+# Скопируем package.json и установим зависимости
+COPY package.json package-lock.json ./
+RUN npm i
 
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the application code
+# Скопируем исходники и соберём продакшн-бандл
 COPY . .
-
-# Build the application
 RUN npm run build
 
+# Этап продакшн-образа с Nginx
+FROM nginx:1.27-alpine
 
-FROM node:22.14.0-alpine
-WORKDIR /app
-RUN npm install -g serve
-COPY --from=builder /app/dist ./dist
-EXPOSE ${PORT}
-CMD ["serve", "-s", "dist", "-l", "${PORT}"]
+# Копируем сборку React в папку Nginx
+COPY --from=builder /app/build /usr/share/nginx/html
 
+# Копируем кастомный конфиг Nginx (если нужен SPA fallback)
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
+# Render задаст PORT, но Nginx по умолчанию слушает 80
+# Поэтому игнорируем PORT, Render сам проксирует 443 → 80
+EXPOSE 80
 
-
-# Copy built files from the builder stage
-#COPY --from=builder /app/dist /usr/share/nginx/html
-
-# Copy custom Nginx configuration (optional, if needed)
-# COPY TEMPnginx.confTEMP /etc/nginx/conf.d/default.conf
-
-# Expose port (default for Nginx is 80)
-#EXPOSE 80
-
-# Start Nginx
-#CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
