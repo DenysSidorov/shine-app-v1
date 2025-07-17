@@ -7,6 +7,7 @@ console.log("SERVER_DOMAIN", SERVER_DOMAIN);
 console.log("SERVER_PORT", SERVER_PORT);
 const s_port = SERVER_PORT !== undefined && SERVER_PORT !== "undefined" ? SERVER_PORT : "";
 const API_URL = `${SERVER_DOMAIN}${s_port ? ":" + s_port : ""}/api`;
+console.log("API_URL", API_URL);
 // const API_URL = ` ${SERVER_DOMAIN}:${SERVER_PORT}/api`;
 
 export const fetchCategories = async (): Promise<CategoryType[]> => {
