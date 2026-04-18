@@ -5,15 +5,4 @@ export const pagesConfig = {
     url: `${domain}/categories`,
     requiresAuth: false,
   },
-  dashboard: {
-    title: "Dashboard",
-    url: "/dashboard",
-    requiresAuth: true,
-  },
-  profile: {
-    title: "User Profile",
-    url: "/profile",
-    requiresAuth: true,
-  },
-
 };
