@@ -48,4 +48,26 @@ export abstract class AppStore {
   abstract resetNewTask(): void;
 
   abstract addNewCategory(): Promise<void>;
+
+  // Search
+  abstract getSearchQuery(): string;
+  abstract setSearchQuery(query: string): void;
+
+  // Sorting
+  abstract getSortBy(): "name" | "date" | "manual";
+  abstract setSortBy(sortBy: "name" | "date" | "manual"): void;
+
+  // Trash
+  abstract getShowDeleted(): boolean;
+  abstract setShowDeleted(show: boolean): void;
+  abstract restoreCategory(id: string): Promise<void>;
+
+  // Drag and drop
+  abstract reorderCategories(categoryId: string, newIndex: number): void;
+
+  // Filtering
+  abstract getFilteredCategories(): CategoryType[];
+
+  // Progress
+  abstract getCategoryCompletionPercent(category: CategoryType): number;
 }

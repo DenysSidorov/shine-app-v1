@@ -6,6 +6,8 @@ import { MdOutlineDelete } from "react-icons/md";
 import Title from "@/components/title";
 import { useAppStore } from "@/hooks/useAppStore.tsx";
 import CategoryTaskList from "@/sections/categories-list/categories-item-list/category-task-list";
+import CompletionProgress from "@/components/completion-progress";
+import { useState } from "react";
 
 interface CategoriesListItemI {
   category: CategoryListType;
@@ -14,15 +16,34 @@ interface CategoriesListItemI {
 const LIMIT_TASKS = 3;
 
 function CategoriesItemList({ category }: CategoriesListItemI) {
-  const { saveCategoryTitle, removeCategory } = useAppStore();
+  const { saveCategoryTitle, removeCategory, getCategoryCompletionPercent } = useAppStore();
   const { tasks, id, color, title } = category;
+  const completionPercent = getCategoryCompletionPercent(category);
+  const [isDragging, setIsDragging] = useState(false);
 
   const saveTitle = (title: string) => {
     saveCategoryTitle({ categoryId: id, title });
   };
 
+  const handleDragStart = (e: React.DragEvent) => {
+    setIsDragging(true);
+    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.setData("categoryId", id);
+  };
+
+  const handleDragEnd = () => {
+    setIsDragging(false);
+  };
+
   return (
-    <div className={`noWrap ${s.block}`} style={{ backgroundColor: color }}>
+    <div
+      className={`noWrap ${s.block} ${isDragging ? s.dragging : ""}`}
+      style={{ backgroundColor: color }}
+      draggable
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
+      data-category-id={id}
+    >
       <Link to={id}>
         <div className={s.editBlock}>
           <MdOutlineReadMore />
@@ -34,6 +55,10 @@ function CategoriesItemList({ category }: CategoriesListItemI) {
       </div>
 
       <Title title={title} className={s.title} isEditable saveTitle={saveTitle} id={id} />
+
+      <div className={s.separator} />
+
+      <CompletionProgress percent={completionPercent} size="small" showLabel={true} />
 
       <div className={s.separator} />
 

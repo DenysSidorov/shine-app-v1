@@ -10,6 +10,8 @@ export interface CategoryType {
   tasks?: TaskType[];
   goalCount?: number;
   currentCount?: number;
+  order?: number;
+  isDeleted?: boolean;
 }
 
 export interface CategoryListType extends CategoryType {

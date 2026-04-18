@@ -1,25 +1,24 @@
 @import "./reset.css";
 @import "./animations.css";
 @import "./variables.scss";
-@import '@fontsource/roboto/300.css';
-@import '@fontsource/roboto/400.css';
-@import '@fontsource/roboto/700.css';
+@import "@fontsource/roboto/300.css";
+@import "@fontsource/roboto/400.css";
+@import "@fontsource/roboto/700.css";
 
 :root {
+  & body {
+    background-color: white;
+    font-family: "Roboto", sans-serif;
+  }
 
-    & body {
-        background-color: white;
-        font-family: 'Roboto', sans-serif;
-    };
+  & ul {
+    display: flex;
+    gap: 30px;
+  }
 
-    & ul {
-        display: flex;
-        gap: 30px;
-    }
-
-    & .noWrap {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+  & .noWrap {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }

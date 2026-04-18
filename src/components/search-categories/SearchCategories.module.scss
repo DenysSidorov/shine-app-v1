@@ -1,0 +1,31 @@
+@import "@/styles/variables";
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  border: 1px solid $colBorderGrey;
+  border-radius: 8px;
+  background-color: $colWhite;
+}
+
+.icon {
+  color: $colTextGreyLight;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: $colBlack;
+  background: transparent;
+
+  &::placeholder {
+    color: $colTextGreyLight;
+  }
+}

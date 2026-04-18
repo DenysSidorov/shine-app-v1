@@ -1,8 +1,8 @@
 @import "src/styles/variables";
 
 .disabled {
-  color: $colBorderGrey!important;
-  border-color: $colBorderGrey!important;
+  color: $colBorderGrey !important;
+  border-color: $colBorderGrey !important;
 }
 
 .completed {
@@ -31,7 +31,7 @@
     align-items: center;
     border-radius: 4px;
     margin-right: 6px;
-    border: 1px solid  $colBorderGrey;
+    border: 1px solid $colBorderGrey;
     transition: all 0.3s ease-in-out;
 
     & svg {

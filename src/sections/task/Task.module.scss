@@ -44,8 +44,8 @@
   display: flex;
   align-items: center;
   .text {
-      font-size: 20px;
-      color: $colDate;
+    font-size: 20px;
+    color: $colDate;
   }
   .labelClassName {
     color: $colDate !important;
@@ -59,11 +59,11 @@
 
 .checkbox {
   & > span > svg {
-    color: $colDate!important;
+    color: $colDate !important;
   }
 }
 
-.listBlock{
+.listBlock {
   display: flex;
   align-items: center;
   .list {

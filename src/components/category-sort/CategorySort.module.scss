@@ -1,0 +1,43 @@
+@import "@/styles/variables";
+
+.sortContainer {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background-color: $colWhite;
+  border-radius: 8px;
+  border: 1px solid $colBorderGrey;
+  margin-bottom: 12px;
+}
+
+.sortButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border: 1px solid $colBorderGrey;
+  border-radius: 6px;
+  background-color: $colWhite;
+  color: $colTextGrey;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 12px;
+  font-weight: 500;
+
+  &:hover {
+    border-color: $colInteractiveElementBlue;
+    color: $colInteractiveElementBlue;
+  }
+
+  &.active {
+    background-color: $colInteractiveElementBlue;
+    color: $colWhite;
+    border-color: $colInteractiveElementBlue;
+  }
+}
+
+.label {
+  @media (max-width: 480px) {
+    display: none;
+  }
+}

@@ -5,9 +5,18 @@
   height: 205px;
   padding: 16px;
   position: relative;
+  cursor: grab;
+  transition: opacity 0.2s ease;
+  overflow: hidden;
+
+  &.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+  }
 }
 
-.editBlock, .removeBlock {
+.editBlock,
+.removeBlock {
   position: absolute;
   z-index: 1;
   border-radius: 50%;

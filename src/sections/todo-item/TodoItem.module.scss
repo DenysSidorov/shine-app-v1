@@ -18,17 +18,17 @@
 }
 
 .checkboxClassName {
-  width: 21px!important;
-  height: 21px!important;
+  width: 21px !important;
+  height: 21px !important;
 }
 
 .checkbox {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 30px!important;
+  font-size: 30px !important;
   & > span > svg {
-    color: $colDate!important;
+    color: $colDate !important;
   }
 }
 

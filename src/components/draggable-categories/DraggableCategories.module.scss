@@ -1,0 +1,27 @@
+@import "@/styles/variables";
+
+.draggableContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.draggableItem {
+  cursor: grab;
+  transition: all 0.2s ease;
+  opacity: 1;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &.dragging {
+    opacity: 0.5;
+  }
+
+  &.dragOver {
+    transform: scale(1.02);
+    background-color: rgba(72, 133, 237, 0.1);
+    border-radius: 8px;
+  }
+}

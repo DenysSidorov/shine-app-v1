@@ -20,6 +20,16 @@ class MobXRootStore implements AppStore {
   getIsLoadingCategories = MobXCategoriesStore.getIsLoadingCategories;
   removeNewCategoryId = MobXCategoriesStore.removeNewCategoryId;
   removeCategory = MobXCategoriesStore.removeCategory;
+  getSearchQuery = MobXCategoriesStore.getSearchQuery;
+  setSearchQuery = MobXCategoriesStore.setSearchQuery;
+  getSortBy = MobXCategoriesStore.getSortBy;
+  setSortBy = MobXCategoriesStore.setSortBy;
+  getShowDeleted = MobXCategoriesStore.getShowDeleted;
+  setShowDeleted = MobXCategoriesStore.setShowDeleted;
+  restoreCategory = MobXCategoriesStore.restoreCategory;
+  reorderCategories = MobXCategoriesStore.reorderCategories;
+  getFilteredCategories = MobXCategoriesStore.getFilteredCategories;
+  getCategoryCompletionPercent = MobXCategoriesStore.getCategoryCompletionPercent;
 
   // category
   getCurrentCategory = MobXCategoryStore.getCurrentCategory;

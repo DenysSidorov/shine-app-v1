@@ -1,0 +1,70 @@
+@import "@/styles/variables";
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transform: translateY(4px);
+
+  &.small {
+    gap: 4px;
+  }
+
+  &.medium {
+    gap: 8px;
+  }
+
+  &.large {
+    gap: 12px;
+  }
+}
+
+.bar {
+  flex: 1;
+  height: 6px;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+  overflow: hidden;
+
+  .small & {
+    height: 4px;
+  }
+
+  .medium & {
+    height: 6px;
+  }
+
+  .large & {
+    height: 8px;
+  }
+}
+
+.fill {
+  height: 100%;
+  background: linear-gradient(90deg, $colInteractiveElementGreen 0%, $colInfoElementOrange 100%);
+  transition: width 0.3s ease;
+  border-radius: 3px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: $colTextGrey;
+  min-width: 32px;
+  text-align: right;
+
+  .small & {
+    font-size: 10px;
+    min-width: 24px;
+  }
+
+  .medium & {
+    font-size: 12px;
+    min-width: 32px;
+  }
+
+  .large & {
+    font-size: 14px;
+    min-width: 40px;
+  }
+}
