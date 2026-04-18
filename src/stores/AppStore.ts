@@ -12,6 +12,9 @@ import { TodoType } from "@/types/todo.ts";
 
 export abstract class AppStore {
   abstract getCategories(): CategoryType[];
+  abstract getFilteredCategories(): CategoryType[];
+  abstract setSearchQuery(query: string): void;
+  abstract getSearchQuery(): string;
   abstract getCurrentCategory(): CategoryType | undefined;
   abstract loadCategories(): Promise<void>;
   abstract updateTaskStatusCategory({ status, categoryId, idTask }: CategoryTaskStatusType): Promise<void>;

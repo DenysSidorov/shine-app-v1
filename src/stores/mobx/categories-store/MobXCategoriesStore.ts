@@ -8,6 +8,7 @@ class MobXCategoriesStore {
   newCategoryId: null | string = null;
   isLoading: boolean = false;
   error: string | null = null;
+  searchQuery: string = "";
 
   constructor() {
     makeAutoObservable(this);
@@ -46,6 +47,20 @@ class MobXCategoriesStore {
     return this.categories;
   };
 
+  setSearchQuery = (query: string): void => {
+    this.searchQuery = query;
+  };
+
+  getSearchQuery = (): string => {
+    return this.searchQuery;
+  };
+
+  getFilteredCategories = (): CategoryType[] => {
+    if (!this.searchQuery.trim()) return this.categories;
+    const q = this.searchQuery.toLowerCase().trim();
+    return this.categories.filter((c) => c.title.toLowerCase().includes(q));
+  };
+
   removeNewCategoryId = (): void => {
     this.newCategoryId = null;
   };
@@ -81,14 +96,12 @@ class MobXCategoriesStore {
       const data: CategoryType = await categoryService.fetchSaveCategoryTitle({ categoryId, title });
 
       runInAction(() => {
-        const categories = this.categories.map((category: CategoryType) => {
+        this.categories = this.categories.map((category: CategoryType) => {
           if (category.id === data.id) {
             return data;
           }
           return category;
         });
-
-        this.categories = categories;
       });
     } catch (error) {
       console.log(error);
@@ -105,14 +118,12 @@ class MobXCategoriesStore {
       });
 
       runInAction(() => {
-        const categories = this.categories.map((category: CategoryType) => {
+        this.categories = this.categories.map((category: CategoryType) => {
           if (category.id === data.id) {
             return data;
           }
           return category;
         });
-
-        this.categories = categories;
       });
     } catch (error) {
       console.log(error);
